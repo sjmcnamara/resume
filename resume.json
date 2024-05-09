@@ -137,7 +137,7 @@
       "startDate": "1993-12-31",
       "endDate": "1995-12-31",
       "highlights": [],
-      "summary": "As technical lead of the core Orbix development group my main responsibility was the development and delivery of new product versions. I focused on the Orbix runtime components and the transport layer in particular. The main challenge was to maintain a single C++ source code base that worked across an every growing set of platforms. An additional challenge was tracking the ever growing core set of OMG specifications.",
+      "summary": "As technical lead of the core Orbix development group my main responsibility was the development and delivery of new product versions. I focused on the Orbix runtime components and the transport layer in particular. The main challenge was to maintain a single C++ source code base that worked across an large set of operating systems. An additional challenge was tracking the ever growing core set of OMG specifications.",
       "url": "https://www.linkedin.com/company/iona-technologies/",
       "location": "Dublin, Ireland"
     }
