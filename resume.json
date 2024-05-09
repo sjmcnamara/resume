@@ -1,0 +1,288 @@
+{
+  "$schema": "https://raw.githubusercontent.com/jsonresume/resume-schema/v1.0.0/schema.json",
+  "basics": {
+    "name": "Stephen McNamara",
+    "label": "CEO Uphold Labs",
+    "image": "",
+    "email": "sjmcnamara@gmail.com",
+    "phone": "",
+    "url": "",
+    "summary": "Highly experienced CTO and entrepreneur with 30 years in the design, implementation, and deployment of scalable software systems primarily in the payments and crypto space. I bring enthusiasm, creativity and ideas to whatever I do; be that startups or large corporations. I am a skilled and knowledgable technical leader with a commercial mindset, who delivers on the business vision. \n\nEqually comfortable discussing strategy at board level or deep diving into technical matters on a day to day basis. I have a strong track record of mentoring, team leadership and decision making.\n\nMeaningful executive experience with excellent presentation and communication skills, along with proven leadership on strategic initiatives and culture change.",
+    "location": {
+      "countryCode": "US",
+      "address": "United Kingdom"
+    },
+    "profiles": [
+      {
+        "network": "LinkedIn",
+        "username": "stephenmcnamara",
+        "url": "https://www.linkedin.com/in/stephenmcnamara/"
+      }
+    ]
+  },
+  "work": [
+    {
+      "name": "Uphold Inc.",
+      "position": "CEO Uphold Labs",
+      "startDate": "2021-08-31",
+      "endDate": "",
+      "highlights": [],
+      "url": "https://www.linkedin.com/company/upholdinc/"
+    },
+    {
+      "name": "OMG Network",
+      "position": "Chief Operating Officer",
+      "startDate": "2019-08-31",
+      "endDate": "2020-12-31",
+      "highlights": [],
+      "url": "https://www.linkedin.com/company/omgnetwork/"
+    },
+    {
+      "name": "SYNQA",
+      "position": "EVP Strategy",
+      "startDate": "2018-05-31",
+      "endDate": "2020-12-31",
+      "highlights": [],
+      "url": "https://www.linkedin.com/company/synqa/"
+    },
+    {
+      "name": "Huawei Technologies",
+      "position": "Head of Blockchain R&D Strategy",
+      "startDate": "2017-10-31",
+      "endDate": "2018-04-30",
+      "highlights": [],
+      "summary": "The role at Huawei was as part of the group technology R&D organisation. We primarily worked on Hyperledger tooling where we successfully raised the Caliper project (https://www.hyperledger.org/projects/caliper) to TSC approval.  I also had a wider remit to find opportunities to partner with startups, support due diligence and advise other business units as to the applicability, or not, of blockchain and DLT technologies.",
+      "url": "https://www.linkedin.com/company/huawei/",
+      "location": "County Dublin, Ireland"
+    },
+    {
+      "name": "Rakuten",
+      "position": "CTO",
+      "startDate": "2016-08-31",
+      "endDate": "2017-10-31",
+      "highlights": [],
+      "summary": "The Rakuten Blockchain Lab was established following the sale of Bitnet Technologies IP to Rakuten. While growing the team in Belfast we worked closely with our Tokyo colleagues to better understand the current application needs and look for novel applications of blockchain technology. Conducted multiple projects building working prototypes of DLT based systems, including development of a sophisticated set of Bitcoin wallet services.",
+      "url": "https://www.linkedin.com/company/rakuten/",
+      "location": "Belfast, United Kingdom"
+    },
+    {
+      "name": "Bitnet Technologies Ltd.",
+      "position": "CTO & Co-Founder",
+      "startDate": "2014-01-31",
+      "endDate": "2016-08-31",
+      "highlights": [],
+      "summary": "Bitnet was formed to disrupt the way enterprise merchants conduct commerce. Risk free, low cost cross border payments have long been a goal of the payments industry and with the emergence of Bitcoin and blockchain technology these challenges are radically simplified.\n\nAs co-founder I am deeply involved in all aspects of the business; from initial formation and team development, product delivery, strategy, fund raising, Investor Relations and customer growth.",
+      "url": "https://www.linkedin.com/company/bitnet-technologies-ltd-/"
+    },
+    {
+      "name": "Visa / CyberSource",
+      "position": "Head of Technology / CTO",
+      "startDate": "2011-07-31",
+      "endDate": "2014-01-31",
+      "highlights": [],
+      "summary": "Following the acquisition of CyberSource by Visa I worked closely with the Visa CTO office and enterprise architecture group on strategic alignment, system consolidation and platform integration into the Visa ecosystem. This required close cooperation on operational and security work as well as new product ideas and integration.\n\nA key goal was the establishment (recruiting externally and promoting internally) of the CyberSource technology team. The teams goal was the definition and delivery of a new technology strategy for the business. With successful stakeholder management we developed and delivered a meaningful new platform architecture, creation & delivery of a new set of developer APIs and significant investment in data analytics R&D.\n\nI also spent significant time supporting business development by providing external company diligence as part of an ongoing brief to identify opportunities for companies to invest in and/or acquire.",
+      "url": "https://www.linkedin.com/company/visa/",
+      "location": "Foster City, CA"
+    },
+    {
+      "name": "CyberSource",
+      "position": "Chief Software Engineer",
+      "startDate": "2008-08-31",
+      "endDate": "2011-07-31",
+      "highlights": [],
+      "summary": "As chief engineer for the new CyberSource development centre my role was to recruit, train and lead the engineering group. The team brought new products to market within the first year and became subject matter experts on payments and e-commerce establishing themselves as some of the best technical talent within the company. We helped define and introduce more robust processes around development, testing and deployment.",
+      "url": "https://www.linkedin.com/company/cybersource/"
+    },
+    {
+      "name": "Liberty Mutual Insurance",
+      "position": "Principal Software Engineer",
+      "startDate": "2006-09-30",
+      "endDate": "2008-08-31",
+      "highlights": [],
+      "summary": "While at Liberty I worked on the Premium Innovation team whose role was the;\n\n• Development and deployment of Integration Architecture & Large System Application Architecture \n• Application of Agile and Lean techniques in an attempt to define solutions to difficult business problems\n• Design & develop strategic software solutions\n• Develop Open Source Software strategy, evangelism, and R&D",
+      "url": "https://www.linkedin.com/company/liberty-mutual-insurance/",
+      "location": "Belfast, United Kingdom"
+    },
+    {
+      "name": "Valista",
+      "position": "Architect",
+      "startDate": "2000-07-31",
+      "endDate": "2006-09-30",
+      "highlights": [],
+      "summary": "In 2003 I formally took responsibility for all architectural aspects of Valista's award winning payments product PaymentsPlus. This role included responsibility for the following; \n• Provide technical design leadership and review of all business requirements and functional specifications ensuring these meet the business needs and strategic objectives. \n• Produce detailed product design artefacts.\n• Lead implementation engineer with daily involvement in the coding, testing and debugging of the platform. \n• Work with Professional Services to understand how our customers use our products and incorporate their feedback into ongoing product evolution. \n• Working with Product Management on the product roadmap, collating and integrating key functional requirements into the plan, with  consideration for both client and internal requirements.",
+      "url": "https://www.linkedin.com/company/valista/",
+      "location": "Dublin, Ireland"
+    },
+    {
+      "name": "ApTest",
+      "position": "Director of Engineer",
+      "startDate": "1997-12-31",
+      "endDate": "2000-06-30",
+      "highlights": [],
+      "summary": "Specialists in automated software testing, California based, ApTest were keen to open a European headquarters. My role was to establish the company, build the team and deliver on projects won by ApTest Ireland. During this time I successfully managed the development and delivery of the OMG and OpenGroup sponsored CORBA test suites; VSOrb and VSJorb http://www.opengroup.org/vsorb.",
+      "url": "",
+      "location": "Dublin, Ireland"
+    },
+    {
+      "name": "IONA Technologies",
+      "position": "Principal Engineer",
+      "startDate": "1995-12-31",
+      "endDate": "1997-12-31",
+      "highlights": [],
+      "summary": "As well as continuing my role as technical lead of the Orbix team, I took charge of the overall project management of the group. As the product grew in complexity and scope, together with a rapidly growing customer base, I helped foster and develop more formal development procedures within the team.",
+      "url": "https://www.linkedin.com/company/iona-technologies/",
+      "location": "Dublin, Ireland"
+    },
+    {
+      "name": "IONA Technologies",
+      "position": "Senior Software Engineer",
+      "startDate": "1993-12-31",
+      "endDate": "1995-12-31",
+      "highlights": [],
+      "summary": "As technical lead of the core Orbix development group my main responsibility was the development and delivery of new product versions. I focused on the Orbix runtime components and the transport layer in particular. The main challenge was to maintain a single C++ source code base that worked across an every growing set of platforms. An additional challenge was tracking the ever growing core set of OMG specifications.",
+      "url": "https://www.linkedin.com/company/iona-technologies/",
+      "location": "Dublin, Ireland"
+    }
+  ],
+  "volunteer": [],
+  "education": [
+    {
+      "institution": "Manchester Metropolitan University",
+      "area": "Software Engineering",
+      "studyType": "HND",
+      "startDate": "1989-12-31",
+      "endDate": "1991-12-31",
+      "score": "",
+      "courses": []
+    }
+  ],
+  "awards": [],
+  "certificates": [],
+  "publications": [],
+  "skills": [
+    {
+      "name": "Leadership",
+      "level": "",
+      "keywords": []
+    },
+    {
+      "name": "IT Strategy",
+      "level": "",
+      "keywords": []
+    },
+    {
+      "name": "Product Management",
+      "level": "",
+      "keywords": []
+    },
+    {
+      "name": "Agile Methodologies",
+      "level": "",
+      "keywords": []
+    },
+    {
+      "name": "Visa",
+      "level": "",
+      "keywords": []
+    },
+    {
+      "name": "Bitnet Technologies Ltd.",
+      "level": "",
+      "keywords": []
+    },
+    {
+      "name": "Distributed Systems",
+      "level": "",
+      "keywords": []
+    },
+    {
+      "name": "Java",
+      "level": "",
+      "keywords": []
+    },
+    {
+      "name": "Extreme Programming",
+      "level": "",
+      "keywords": []
+    },
+    {
+      "name": "Enterprise Architecture",
+      "level": "",
+      "keywords": []
+    },
+    {
+      "name": "Software Development",
+      "level": "",
+      "keywords": []
+    },
+    {
+      "name": "Large Scale Systems",
+      "level": "",
+      "keywords": []
+    },
+    {
+      "name": "Cloud Computing",
+      "level": "",
+      "keywords": []
+    },
+    {
+      "name": "Architecture",
+      "level": "",
+      "keywords": []
+    },
+    {
+      "name": "Strategy",
+      "level": "",
+      "keywords": []
+    },
+    {
+      "name": "Product Development",
+      "level": "",
+      "keywords": []
+    },
+    {
+      "name": "Start-ups",
+      "level": "",
+      "keywords": []
+    },
+    {
+      "name": "Payment Systems",
+      "level": "",
+      "keywords": []
+    }
+  ],
+  "languages": [
+    {
+      "fluency": "Native Speaker",
+      "language": "English"
+    }
+  ],
+  "interests": [],
+  "references": [
+    {
+      "name": "Oisin Hurley",
+      "reference": "Stephen is a remarkable creator of organizations, a focussed innovator, an engaged team-mate and an exemplar to any group involved in building a company or developing a product suite. I would recommend him as a valuable addition to any organization. "
+    },
+    {
+      "name": "Iwan Roberts",
+      "reference": "Stephen is a superbly talented software engineer.  Part of his remit at Liberty was to \"think outside the box\" in order to derive the best possible, most innovative technical solutions to help drive the business forwards.  By having an in depth familiarity with what goes on \"inside the box\" Stephen was able to come up with some very interesting solutions."
+    },
+    {
+      "name": "Mike Herrick",
+      "reference": "Stephen is a smart, fun, focused hard working software developer. I worked with Stephen from Portland Oregon. It was far and away my best experience with long distance collaboration. \r\n\r\nI got to know Stephen fairly well in working with him for over a year. I highly recommend him."
+    },
+    {
+      "name": "Fran Heeran",
+      "reference": "I have known and worked with Stephen since he joined Valista in its earliest days. Since then, Stephen has helped to design and build the companies award wining payment platforms. Stephen is an excellent product architect with great product design and implementation skills."
+    },
+    {
+      "name": "Denis Hennessy",
+      "reference": "Stephen is a very smart and driven employee. Highly recommended."
+    }
+  ],
+  "projects": [],
+  "meta": {
+    "version": "v1.0.0",
+    "canonical": "https://github.com/jsonresume/resume-schema/blob/v1.0.0/schema.json"
+  }
+}
