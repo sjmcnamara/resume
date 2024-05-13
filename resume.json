@@ -164,12 +164,12 @@
       "keywords": []
     },
     {
-      "name": "IT Strategy",
+      "name": "Strategy",
       "level": "",
       "keywords": []
     },
     {
-      "name": "Product Management",
+      "name": "Product Development",
       "level": "",
       "keywords": []
     },
@@ -184,17 +184,7 @@
       "keywords": []
     },
     {
-      "name": "Enterprise Architecture",
-      "level": "",
-      "keywords": []
-    },
-    {
       "name": "Software Development",
-      "level": "",
-      "keywords": []
-    },
-    {
-      "name": "Large Scale Systems",
       "level": "",
       "keywords": []
     },
@@ -204,12 +194,7 @@
       "keywords": []
     },
     {
-      "name": "Strategy",
-      "level": "",
-      "keywords": []
-    },
-    {
-      "name": "Product Development",
+      "name": "Product Management",
       "level": "",
       "keywords": []
     },
