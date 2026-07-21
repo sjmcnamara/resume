@@ -84,7 +84,7 @@ h1 {
 
 /* ---------- sections ---------- */
 
-section { margin-top: 13px; }
+section { margin-top: 11px; }
 
 h2 {
   font-size: 8.5pt;
@@ -99,7 +99,7 @@ h2 {
 
 /* ---------- roles ---------- */
 
-.role { margin-bottom: 9px; break-inside: avoid; }
+.role { margin-bottom: 7px; break-inside: avoid; }
 .role:last-child { margin-bottom: 0; }
 
 .role-head {

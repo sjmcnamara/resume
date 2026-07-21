@@ -27,7 +27,7 @@
       "startDate": "2021-08-31",
       "url": "https://uphold.com",
       "highlights": [
-        "Report to the group CEO, leading a team of 10 taking 0→1 crypto-enabled products to market.",
+        "Report to the group CEO, leading a high-velocity team of 10 that takes 0→1 crypto-enabled financial products from idea to market.",
         "Own the P&L for Uphold Vault, an assisted self-custody product since extended into inheritance: past $1m/yr in subscription revenue, with zero downtime and zero loss of customer funds."
       ]
     },
@@ -60,7 +60,7 @@
       "location": "Belfast, UK",
       "url": "https://www.linkedin.com/company/rakuten/",
       "highlights": [
-        "Established and grew the Belfast blockchain lab after Rakuten acquired Bitnet's IP; delivered DLT prototypes and a production Bitcoin wallet suite with Tokyo teams."
+        "Grew the Rakuten blockchain lab following their acquisition of Bitnet's IP, delivering DLT prototypes and a production Bitcoin wallet with group teams in Tokyo."
       ]
     },
     {
@@ -164,8 +164,8 @@
   "projects": [
     {
       "name": "Whistle",
-      "description": "open-source, E2EE group location sharing on Nostr and MLS. No accounts, no servers, no tracking.",
-      "url": "https://github.com/sjmcnamara/whistle",
+      "description": "A privacy-first, open-source group location sharing app built on Nostr and MLS. End-to-end encrypted: no accounts, no servers, no tracking, no permission required.",
+      "url": "https://getwhistle.org",
       "keywords": [
         "Nostr",
         "MLS",
