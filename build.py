@@ -87,8 +87,12 @@ def role_block(job, compact=False):
 
 
 def render(resume, css):
+    def visible(items):
+        """Entries carrying x_hidden stay in resume.json but leave the page."""
+        return [i for i in items if not i.get("x_hidden")]
+
     basics = resume.get("basics", {})
-    work = resume.get("work", [])
+    work = visible(resume.get("work", []))
     meta = resume.get("meta", {})
 
     full = [j for j in work if not j.get("x_compact")]
@@ -133,7 +137,7 @@ def render(resume, css):
         parts.append("</section>")
 
     tail = []
-    for edu in resume.get("education", []):
+    for edu in visible(resume.get("education", [])):
         degree = " ".join(x for x in [edu.get("studyType"), edu.get("area")] if x)
         tail.append(
             "<div>"
@@ -144,7 +148,7 @@ def render(resume, css):
         )
     langs = ", ".join(
         f"{l.get('language')} ({l.get('fluency')})" if l.get("fluency") else l.get("language", "")
-        for l in resume.get("languages", [])
+        for l in visible(resume.get("languages", []))
     )
     if langs:
         tail.append(f'<div><div class="line">Languages</div><div class="sub">{esc(langs)}</div></div>')

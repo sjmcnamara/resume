@@ -144,13 +144,15 @@
       "area": "Software Engineering",
       "studyType": "HND",
       "startDate": "1989-12-31",
-      "endDate": "1991-12-31"
+      "endDate": "1991-12-31",
+      "x_hidden": true
     }
   ],
   "languages": [
     {
       "language": "English",
-      "fluency": "Native Speaker"
+      "fluency": "Native Speaker",
+      "x_hidden": true
     }
   ],
   "meta": {
