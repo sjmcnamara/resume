@@ -98,6 +98,9 @@ def render(resume, css):
     full = [j for j in work if not j.get("x_compact")]
     compact = [j for j in work if j.get("x_compact")]
 
+    def shorten(url):
+        return url.replace("https://www.", "").replace("https://", "").rstrip("/")
+
     contact = []
     if basics.get("email"):
         contact.append(f'<a href="mailto:{esc(basics["email"])}">{esc(basics["email"])}</a>')
@@ -105,10 +108,18 @@ def render(resume, css):
         contact.append(esc(basics["phone"]))
     for profile in basics.get("profiles", []):
         url = profile.get("url", "")
-        shown = url.replace("https://www.", "").replace("https://", "").rstrip("/")
-        contact.append(f'<a href="{esc(url)}">{esc(shown)}</a>')
+        contact.append(f'<a href="{esc(url)}">{esc(shorten(url))}</a>')
+
+    # Site rides on the location line. A fourth contact row grows the masthead
+    # and costs a line of body copy; widening a row squeezes the label into
+    # wrapping. Pairing with the short location line avoids both.
+    last = []
+    if basics.get("url"):
+        last.append(f'<a href="{esc(basics["url"])}">{esc(shorten(basics["url"]))}</a>')
     if basics.get("location", {}).get("address"):
-        contact.append(esc(basics["location"]["address"]))
+        last.append(esc(basics["location"]["address"]))
+    if last:
+        contact.append(" &nbsp;·&nbsp; ".join(last))
 
     parts = [
         '<div class="sheet">',
