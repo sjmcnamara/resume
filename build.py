@@ -138,7 +138,7 @@ def render(resume, css):
 
     projects = visible(resume.get("projects", []))
     if projects:
-        parts += ["<section>", "<h2>Projects</h2>"]
+        parts += ["<section>", f'<h2>{esc(meta.get("x_projectsHeading", "Projects"))}</h2>']
         for proj in projects:
             name = esc(proj.get("name"))
             if proj.get("url"):
