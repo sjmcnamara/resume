@@ -37,7 +37,10 @@
       "startDate": "2019-08-31",
       "endDate": "2020-12-31",
       "url": "https://www.linkedin.com/company/omgnetwork/",
-      "highlights": []
+      "highlights": [
+        "Led delivery of OMG Network V1 mainnet beta — protocol from testnet to production, and the rebrand of OmiseGO into OMG Network.",
+        "Launched a Plasma-based P2P payment network at up to 4,000 TPS and ~90% lower fees than Ethereum mainnet; the architecture was selected by Tether for its stablecoin sidechain."
+      ]
     },
     {
       "name": "SYNQA",
@@ -54,9 +57,7 @@
       "endDate": "2018-04-30",
       "location": "Dublin, Ireland",
       "url": "https://www.linkedin.com/company/huawei/",
-      "highlights": [
-        "Drove Hyperledger Caliper from group R&D to Technical Steering Committee approval; advised business units and led diligence on DLT partnerships and startup investments."
-      ]
+      "highlights": []
     },
     {
       "name": "Rakuten",
@@ -66,8 +67,7 @@
       "location": "Belfast, UK",
       "url": "https://www.linkedin.com/company/rakuten/",
       "highlights": [
-        "Established and grew the Belfast blockchain lab following Rakuten's acquisition of Bitnet's IP.",
-        "Delivered DLT prototypes and a production-grade Bitcoin wallet services suite with group teams in Tokyo."
+        "Established and grew the Belfast blockchain lab following Rakuten's acquisition of Bitnet's IP, delivering DLT prototypes and a production Bitcoin wallet services suite with group teams in Tokyo."
       ]
     },
     {
@@ -90,8 +90,7 @@
       "url": "https://www.linkedin.com/company/visa/",
       "highlights": [
         "Ran technology for a platform serving 295,000+ merchants and roughly a quarter of all US e-commerce spend at the time of Visa's $2bn acquisition.",
-        "Set the post-acquisition technology strategy and delivered a new platform architecture, developer API suite and data analytics R&D programme.",
-        "Partnered with the Visa CTO office on platform consolidation; ran technical diligence for M&A and investment targets."
+        "Set the post-acquisition technology strategy and delivered a new platform architecture, developer API suite and data analytics R&D programme."
       ]
     },
     {
