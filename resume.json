@@ -7,7 +7,7 @@
     "email": "sjmcnamara@gmail.com",
     "phone": "",
     "url": "https://sjmcnamara.github.io/resume/",
-    "summary": "Technology executive with 30 years building and scaling payments and crypto platforms, as founder, CTO and CEO. Track record spanning venture-backed startup through IPO-scale enterprise — including co-founding Bitnet and its acquisition by Rakuten.",
+    "summary": "Founder and technology executive, 30 years in payments and crypto as CEO, CTO and co-founder. Takes new products from zero to market and owns the P&L.",
     "location": {
       "countryCode": "UK",
       "address": "United Kingdom"
@@ -26,7 +26,10 @@
       "position": "CEO, Uphold Labs",
       "startDate": "2021-08-31",
       "url": "https://uphold.com",
-      "highlights": []
+      "highlights": [
+        "Report to the group CEO, leading a small high-velocity team that takes 0→1 crypto-enabled financial products from idea to market.",
+        "Own the P&L for Uphold Vault, an assisted self-custody product since extended into inheritance: past $1m/yr in subscription revenue, with zero downtime and zero loss of customer funds."
+      ]
     },
     {
       "name": "OMG Network",
@@ -52,8 +55,7 @@
       "location": "Dublin, Ireland",
       "url": "https://www.linkedin.com/company/huawei/",
       "highlights": [
-        "Drove Hyperledger Caliper from group R&D to Technical Steering Committee approval as an official Hyperledger project.",
-        "Advised business units and led technical due diligence on blockchain/DLT partnerships and startup investments."
+        "Drove Hyperledger Caliper from group R&D to Technical Steering Committee approval; advised business units and led diligence on DLT partnerships and startup investments."
       ]
     },
     {
