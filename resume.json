@@ -2,12 +2,12 @@
   "$schema": "https://raw.githubusercontent.com/jsonresume/resume-schema/v1.0.0/schema.json",
   "basics": {
     "name": "Stephen McNamara",
-    "label": "CEO / CTO — Permissionless & Self-Sovereign Technology",
+    "label": "Founder, CEO & CTO — Open Financial Infrastructure",
     "image": "",
     "email": "sjmcnamara@gmail.com",
     "phone": "",
     "url": "https://sjmcnamara.com",
-    "summary": "Founder and technology executive with 30 years in payments and crypto, as CEO, CTO and co-founder. I'm at my best on the hard calls in complex environments — strategy, technology, people — and on growing teams capable of making those calls without me. I've built engineering organisations from the first hire to 100+, and a track record of shipping at the frontier: enterprise bitcoin in 2014, one of the first Ethereum Layer 2s in 2018, assisted self-custody now.",
+    "summary": "Founder and technology executive with 30 years in payments and crypto. I'm at my best on the hard calls in complex environments, and on growing teams capable of making them without me. I've built engineering organisations from the first hire to 100+, and a track record of shipping at the frontier: enterprise bitcoin in 2014, one of the first Ethereum Layer 2s in 2018, assisted self-custody now.",
     "location": {
       "countryCode": "UK",
       "address": "United Kingdom"
@@ -70,8 +70,7 @@
       "endDate": "2016-08-31",
       "url": "https://www.linkedin.com/company/bitnet-technologies-ltd-/",
       "highlights": [
-        "Co-founded an enterprise bitcoin payment processor for large merchants; raised a $14.5m Series A led by Highland Capital Partners, with Rakuten and Digital Currency Group participating.",
-        "Took the platform to production across Rakuten's US, German and Austrian marketplaces; IP and team acquired by Rakuten in 2016."
+        "Co-founded an enterprise bitcoin payment processor for large merchants; raised a $14.5m Series A led by Highland Capital Partners. Platform ran in production across Rakuten’s US, German and Austrian marketplaces; IP and team acquired by Rakuten in 2016."
       ]
     },
     {
@@ -83,7 +82,7 @@
       "url": "https://www.linkedin.com/company/visa/",
       "highlights": [
         "Ran technology for a platform serving 295,000+ merchants and roughly a quarter of all US e-commerce spend at the time of Visa's $2bn acquisition.",
-        "Set the post-acquisition technology strategy and delivered a new platform architecture, developer API suite and data analytics R&D programme."
+        "Set the post-acquisition technology strategy; delivered a new platform architecture and developer API suite."
       ]
     },
     {
@@ -160,5 +159,20 @@
     "canonical": "https://github.com/jsonresume/resume-schema/blob/v1.0.0/schema.json",
     "x_compactSince": "2008",
     "x_compactHeading": "Earlier career"
-  }
+  },
+  "projects": [
+    {
+      "name": "Whistle",
+      "description": "open-source group location sharing on Nostr and MLS. No accounts, no servers, no plaintext on relays.",
+      "url": "https://github.com/sjmcnamara/whistle",
+      "keywords": [
+        "Nostr",
+        "MLS",
+        "RFC 9420",
+        "Swift",
+        "Kotlin",
+        "Rust"
+      ]
+    }
+  ]
 }

@@ -136,6 +136,21 @@ def render(resume, css):
         parts += [role_block(j, compact=True) for j in compact]
         parts.append("</section>")
 
+    projects = visible(resume.get("projects", []))
+    if projects:
+        parts += ["<section>", "<h2>Projects</h2>"]
+        for proj in projects:
+            name = esc(proj.get("name"))
+            if proj.get("url"):
+                name = f'<a href="{esc(proj["url"])}">{name}</a>'
+            parts += [
+                '<div class="role">',
+                f'  <div class="proj"><span class="role-org">{name}</span>'
+                f'<span class="role-pos">{esc(proj.get("description"))}</span></div>',
+                "</div>",
+            ]
+        parts.append("</section>")
+
     tail = []
     for edu in visible(resume.get("education", [])):
         degree = " ".join(x for x in [edu.get("studyType"), edu.get("area")] if x)

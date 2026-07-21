@@ -144,6 +144,11 @@ ul.highlights li::before {
   background: var(--accent);
 }
 
+/* ---------- projects ---------- */
+
+.proj { line-height: 1.4; }
+.proj .role-pos { font-weight: 450; }
+
 /* ---------- compact earlier roles ---------- */
 
 .earlier .role-head { margin-bottom: 1.5px; }
