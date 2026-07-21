@@ -7,7 +7,7 @@
     "email": "sjmcnamara@gmail.com",
     "phone": "",
     "url": "https://sjmcnamara.com",
-    "summary": "Technology executive with three decades in payments and crypto. I'm at my best on the hard calls in complex environments, and building teams capable of making them without me. I've grown engineering organisations from first hire to 100+, and shipped at the frontier: mobile payments in the early 2000s, scaled e-commerce '08-13, enterprise Bitcoin in 2014, one of the first Ethereum Layer 2s in 2018. I'm currently building an inheritable multi-chain assisted self-custody vault.",
+    "summary": "Technology executive with three decades in payments and crypto. I'm at my best on the hard calls in complex environments, and building teams capable of making them without me. I've grown engineering organisations from first hire to 100+, and shipped at the frontier: mobile payments in the 2000s, e-commerce at scale to 2013, enterprise Bitcoin in 2014, one of the first Ethereum Layer 2s in 2018. I'm currently building an inheritable multi-chain assisted self-custody vault.",
     "location": {
       "countryCode": "UK",
       "address": "United Kingdom"
@@ -27,7 +27,7 @@
       "startDate": "2021-08-31",
       "url": "https://uphold.com",
       "highlights": [
-        "Report to the group CEO, leading a high-velocity team of 10 that takes 0→1 crypto-enabled financial products from idea to market.",
+        "Report to the group CEO, leading a team of 10 taking 0→1 crypto-enabled products to market.",
         "Own the P&L for Uphold Vault, an assisted self-custody product since extended into inheritance: past $1m/yr in subscription revenue, with zero downtime and zero loss of customer funds."
       ]
     },
@@ -60,7 +60,7 @@
       "location": "Belfast, UK",
       "url": "https://www.linkedin.com/company/rakuten/",
       "highlights": [
-        "Established and grew the Belfast blockchain lab following Rakuten's acquisition of Bitnet's IP, delivering DLT prototypes and a production Bitcoin wallet services suite with group teams in Tokyo."
+        "Established and grew the Belfast blockchain lab after Rakuten acquired Bitnet's IP; delivered DLT prototypes and a production Bitcoin wallet suite with Tokyo teams."
       ]
     },
     {
@@ -164,7 +164,7 @@
   "projects": [
     {
       "name": "Whistle",
-      "description": "a privacy-first, open-source group location sharing app built on Nostr and MLS. End-to-end encrypted: no accounts, no servers, no tracking, no permission required.",
+      "description": "open-source, E2EE group location sharing on Nostr and MLS. No accounts, no servers, no tracking.",
       "url": "https://github.com/sjmcnamara/whistle",
       "keywords": [
         "Nostr",
