@@ -37,10 +37,15 @@ a:hover { text-decoration: underline; }
   display: flex;
   align-items: baseline;
   justify-content: space-between;
-  gap: 12mm;
+  gap: 8mm;
   border-bottom: 2px solid var(--ink);
   padding-bottom: 7px;
 }
+
+/* Let the name/label column claim the width the contact block isn't using,
+   otherwise it sizes to the h1 and a longer label wraps early. */
+.masthead > div:first-child { flex: 1 1 auto; min-width: 0; }
+.masthead .contact { flex: 0 0 auto; }
 
 h1 {
   font-size: 21pt;
