@@ -32,23 +32,16 @@
       ]
     },
     {
-      "name": "OMG Network",
-      "position": "Chief Operating Officer",
-      "startDate": "2019-08-31",
+      "name": "OMG Network / SYNQA",
+      "position": "EVP Strategy, then Chief Operating Officer",
+      "startDate": "2018-05-31",
       "endDate": "2020-12-31",
       "url": "https://www.linkedin.com/company/omgnetwork/",
       "highlights": [
+        "Shipped Tesuji Plasma, one of the first working Plasma child-chain implementations on Ethereum, establishing the network as a Layer 2 pioneer.",
         "Led delivery of OMG Network V1 mainnet beta — protocol from testnet to production, and the rebrand of OmiseGO into OMG Network.",
         "Launched a Plasma-based P2P payment network at up to 4,000 TPS and ~90% lower fees than Ethereum mainnet; the architecture was selected by Tether for its stablecoin sidechain."
       ]
-    },
-    {
-      "name": "SYNQA",
-      "position": "EVP Strategy",
-      "startDate": "2018-05-31",
-      "endDate": "2020-12-31",
-      "url": "https://www.linkedin.com/company/synqa/",
-      "highlights": []
     },
     {
       "name": "Huawei Technologies",
