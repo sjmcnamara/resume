@@ -224,6 +224,13 @@ def main():
     html_path.write_text(render(resume, css))
     print(f"wrote {html_path}")
 
+    # The workflow publishes dist/, so the custom-domain CNAME has to travel
+    # with the artifact — a copy at the repo root alone never reaches Pages.
+    cname = ROOT / "CNAME"
+    if cname.exists():
+        shutil.copy(cname, DIST / "CNAME")
+        print(f"wrote {DIST / 'CNAME'}  ({cname.read_text().strip()})")
+
     if args.pdf:
         pdf_path = DIST / PDF_NAME
         make_pdf(html_path, pdf_path)
