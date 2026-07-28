@@ -60,10 +60,11 @@ you add a role, tighten or compact another.
 
 Landing page copy lives in [`docs/index.md`](docs/index.md); its styling is in
 [`docs/assets/home.css`](docs/assets/home.css). The portrait is
-`docs/assets/headshot.jpg` (778 × 1051). The panel beside the hero is taller than
+`docs/assets/headshot.jpg` (699 × 1051). The panel beside the hero is taller than
 the image, so it fills the height and gives up width at the sides — the squarer
-the source, the more it loses. Reframe with `object-position` in
-`.hero-photo img` if you swap it. The résumé's layout is in
+the source, the more it loses, which is why a tall crop works better here than a
+near-square one. Reframe with `object-position` in `.hero-photo img` if you swap
+it. The résumé's layout is in
 [`assets/style.css`](assets/style.css), with print rules in the `@media print`
 block and the `@page` rule at the bottom.
 

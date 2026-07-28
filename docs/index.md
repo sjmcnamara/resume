@@ -31,7 +31,7 @@ Aikido, or hunting down new music and gigs.
 </div>
 
 <div class="hero-photo">
-  <img src="assets/headshot.jpg" width="778" height="1051"
+  <img src="assets/headshot.jpg" width="699" height="1051"
        alt="Stephen McNamara">
 </div>
 
