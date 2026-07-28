@@ -88,30 +88,11 @@ body {
   background-repeat: no-repeat;
 }
 
-/* The name sits centre-stage as a window title, not a masthead. */
+/* An empty bar: traffic lights at one end, the theme toggle at the other. The
+   name is already the first thing inside the window, and repeating it up here
+   read as a masthead rather than window furniture. site_name still fills the
+   <title> tag, so tabs and bookmarks are unaffected. */
 .md-header__title {
-  margin: 0;
-  flex: 1 1 auto;
-  font-family: var(--md-code-font-family);
-  font-size: .62rem;
-  font-weight: 500;
-  letter-spacing: .02em;
-  color: var(--sm-muted);
-  text-align: center;
-  line-height: 2.4rem;
-  overflow: hidden;
-}
-
-.md-header__title .md-header__topic {
-  position: static;
-  transform: none;
-  opacity: 1;
-  display: block;
-}
-
-/* Material emits a second topic holding the page title, for the swap it does on
-   scroll. There is no scroll swap here, so it would just print the name twice. */
-.md-header__title .md-header__topic + .md-header__topic {
   display: none;
 }
 
@@ -123,10 +104,11 @@ body {
   display: none;
 }
 
-/* Balance the traffic lights so the title stays optically centred. */
-.md-header__option,
-.md-header [data-md-component="palette"] {
-  flex: 0 0 4.5rem;
+/* The palette form is itself .md-header__option — one element, not two. With no
+   title left to divide the bar, an auto margin holds it at the far end. */
+.md-header__option {
+  flex: 0 0 auto;
+  margin-left: auto;
   display: flex;
   justify-content: flex-end;
 }
@@ -380,9 +362,7 @@ body {
 }
 
 .md-typeset .site-foot {
-  margin-top: 1.8rem;
-  padding-top: .9rem;
-  border-top: 1px solid var(--sm-panel-edge);
+  margin-top: 2rem;
   font-size: .58rem;
   letter-spacing: .04em;
   color: var(--sm-muted);
