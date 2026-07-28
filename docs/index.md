@@ -28,7 +28,7 @@ self-custody vault.
 </div>
 
 <div class="hero-photo">
-  <img src="assets/headshot.jpg" width="647" height="1100"
+  <img src="assets/headshot.jpg" width="699" height="1051"
        alt="Stephen McNamara">
 </div>
 
