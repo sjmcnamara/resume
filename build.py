@@ -3,14 +3,20 @@
 
     python3 build.py            # HTML only  -> dist/index.html
     python3 build.py --pdf      # HTML + PDF -> dist/stephen-mcnamara.pdf
+    python3 build.py --emit-cards   # project cards for the MkDocs landing page
 
 PDF generation shells out to headless Chrome; no npm dependencies, nothing to
 install on either macOS or the GitHub Actions ubuntu runner.
+
+The published site puts the sheet under /resume/ and the PDF at the site root,
+so --out and --pdf-out can point at different directories; the download link is
+worked out relative to whichever pair is in play.
 """
 
 import argparse
 import html
 import json
+import os
 import pathlib
 import re
 import shutil
@@ -19,6 +25,7 @@ import sys
 
 ROOT = pathlib.Path(__file__).parent
 DIST = ROOT / "dist"
+CARDS = ROOT / "docs" / ".generated" / "projects.md"
 PDF_NAME = "stephen-mcnamara.pdf"
 
 MONTHS = ["Jan", "Feb", "Mar", "Apr", "May", "Jun",
@@ -86,7 +93,7 @@ def role_block(job, compact=False):
     return "\n".join(out)
 
 
-def render(resume, css):
+def render(resume, css, pdf_href=PDF_NAME):
     def visible(items):
         """Entries carrying x_hidden stay in resume.json but leave the page."""
         return [i for i in items if not i.get("x_hidden")]
@@ -183,7 +190,16 @@ def render(resume, css):
         parts += ["<section>", "<h2>Education</h2>", '<div class="tail">'] + tail + ["</div>", "</section>"]
 
     parts.append("</div>")
-    parts.append(f'<div class="actions"><a href="{PDF_NAME}" download>Download PDF</a></div>')
+    # Screen-only footer: back to the landing page on the left, PDF on the right.
+    # The home link is absolute so it still points somewhere useful when the
+    # sheet is opened straight off disk out of dist/.
+    home = esc(basics.get("url") or "/")
+    parts.append(
+        '<div class="actions">'
+        f'<a class="back" href="{home}">← sjmcnamara.com</a>'
+        f'<a href="{esc(pdf_href)}" download>Download PDF</a>'
+        "</div>"
+    )
 
     body = "\n".join(parts)
     title = f'{basics.get("name", "Resume")} — {basics.get("label", "")}'.strip(" —")
@@ -204,6 +220,37 @@ def render(resume, css):
 </body>
 </html>
 """
+
+
+def emit_cards(resume, path=CARDS):
+    """Write the landing page's project grid from resume.json.
+
+    Every project lands here, including the ones carrying x_hidden — that flag
+    keeps an entry off the one-page sheet, not off the site.
+    """
+    # Markdown, not HTML: quotes and apostrophes have to survive as themselves
+    # rather than as entities, so only the tag-forming characters get escaped.
+    def md(text):
+        return html.escape(str(text or ""), quote=False)
+
+    cards = ['<div class="grid cards" markdown>', ""]
+    for proj in resume.get("projects", []):
+        name = md(proj.get("name"))
+        if proj.get("url"):
+            name = f'[{name}]({proj["url"]})'
+        cards.append(f"-   __{name}__")
+        cards.append("")
+        cards.append(f'    {md(proj.get("description", ""))}')
+        tagline = proj.get("x_tagline") or " · ".join(proj.get("keywords", [])[:3])
+        if tagline:
+            cards.append("")
+            cards.append(f'    <span class="card-tags">{md(tagline)}</span>')
+        cards.append("")
+    cards.append("</div>")
+
+    path.parent.mkdir(parents=True, exist_ok=True)
+    path.write_text("\n".join(cards) + "\n")
+    print(f"wrote {path}")
 
 
 def find_chrome():
@@ -244,25 +291,35 @@ def main():
     ap.add_argument("--pdf", action="store_true", help="also render the PDF")
     ap.add_argument("--check", action="store_true",
                     help="with --pdf, exit non-zero unless the PDF is exactly one page")
+    ap.add_argument("--out", default=DIST, type=pathlib.Path,
+                    help="directory for index.html (default: dist/)")
+    ap.add_argument("--pdf-out", default=None, type=pathlib.Path,
+                    help="directory for the PDF (default: same as --out)")
+    ap.add_argument("--emit-cards", action="store_true",
+                    help="write the landing page's project grid and stop")
     args = ap.parse_args()
 
     resume = json.loads((ROOT / "resume.json").read_text())
-    css = (ROOT / "assets" / "style.css").read_text()
 
-    DIST.mkdir(exist_ok=True)
-    html_path = DIST / "index.html"
-    html_path.write_text(render(resume, css))
+    # MkDocs needs the snippet on disk before it builds, so this runs on its own
+    # ahead of the site build as well as alongside every ordinary sheet render.
+    emit_cards(resume)
+    if args.emit_cards:
+        return
+
+    css = (ROOT / "assets" / "style.css").read_text()
+    out = args.out
+    pdf_dir = args.pdf_out or out
+
+    out.mkdir(parents=True, exist_ok=True)
+    html_path = out / "index.html"
+    pdf_path = pdf_dir / PDF_NAME
+    pdf_href = os.path.relpath(pdf_path, out)
+    html_path.write_text(render(resume, css, pdf_href))
     print(f"wrote {html_path}")
 
-    # The workflow publishes dist/, so the custom-domain CNAME has to travel
-    # with the artifact — a copy at the repo root alone never reaches Pages.
-    cname = ROOT / "CNAME"
-    if cname.exists():
-        shutil.copy(cname, DIST / "CNAME")
-        print(f"wrote {DIST / 'CNAME'}  ({cname.read_text().strip()})")
-
     if args.pdf:
-        pdf_path = DIST / PDF_NAME
+        pdf_dir.mkdir(parents=True, exist_ok=True)
         make_pdf(html_path, pdf_path)
         pages = page_count(pdf_path)
         print(f"page count: {pages}")

@@ -1,0 +1,68 @@
+site_name: Stephen McNamara
+site_url: https://sjmcnamara.com
+site_description: >-
+  Technology executive with three decades in payments and crypto. Currently
+  building an inheritable multi-chain assisted self-custody vault.
+site_author: Stephen McNamara
+
+# The sheet under /resume/ is rendered by build.py, not by MkDocs, so it never
+# appears in the nav and MkDocs never sees the directory.
+docs_dir: docs
+site_dir: site
+use_directory_urls: true
+
+theme:
+  name: material
+  language: en
+  font:
+    text: Inter
+    code: Roboto Mono
+  favicon: assets/favicon.svg
+  features:
+    - navigation.instant
+    - navigation.instant.progress
+  palette:
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: black
+      accent: indigo
+      toggle:
+        icon: material/weather-night
+        name: Switch to dark mode
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: black
+      accent: indigo
+      toggle:
+        icon: material/weather-sunny
+        name: Switch to light mode
+
+# One page has nothing to search, and the empty search box only clutters the
+# title bar the mac-window motif turns the header into.
+plugins: []
+
+extra_css:
+  - assets/home.css
+
+markdown_extensions:
+  - attr_list
+  - md_in_html
+  - smarty
+  - pymdownx.emoji:
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
+  # Cards are generated from resume.json into docs/.generated/ — a dot-prefixed
+  # directory so MkDocs skips it as a page and only the snippet include picks
+  # it up. Run `python3 build.py --emit-cards` before serving or building.
+  - pymdownx.snippets:
+      base_path: [docs/.generated]
+      check_paths: true
+
+# `social` would only render into Material's footer bar, which the mac-window
+# layout hides — the hero carries those links itself.
+extra:
+  generator: false
+
+# Single page: nothing to navigate to, so the top-level nav stays empty.
+nav:
+  - Home: index.md

@@ -1,4 +1,4 @@
-name: Publish resume
+name: Publish site
 
 on:
   push:
@@ -20,13 +20,31 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Build HTML + PDF (fails if it spills to a second page)
-        run: python3 build.py --pdf --check
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.x"
+          cache: pip
+
+      - run: pip install -r requirements.txt
+
+      # Cards come out of resume.json, and MkDocs needs the snippet on disk
+      # before it builds, so this has to run first.
+      - name: Generate the project cards
+        run: python3 build.py --emit-cards
+
+      - name: Build the site
+        run: mkdocs build --strict
+
+      # The sheet is written into the built site rather than rendered through
+      # MkDocs: Material's stylesheet would otherwise reflow the print layout.
+      # The PDF lands at the site root so /stephen-mcnamara.pdf keeps working.
+      - name: Build the résumé + PDF (fails if it spills to a second page)
+        run: python3 build.py --pdf --check --out site/resume --pdf-out site
 
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3
         with:
-          path: dist
+          path: site
 
   deploy:
     needs: build

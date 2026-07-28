@@ -1,0 +1,421 @@
+/* Landing page — a mac window sitting on a desktop.
+   Material's header is restyled into the title bar (traffic lights, rounded top
+   corners, centred mono title) and the content area becomes the window body, so
+   the whole page reads as one application window rather than a document.
+
+   Colours stay in the résumé's family: the light scheme's desktop and panels are
+   the #eef1f5 / #ffffff pairing the sheet at /resume/ already uses, so the two
+   pages read as one site. */
+
+:root,
+[data-md-color-scheme="default"] {
+  --sm-desktop: #dfe4ea;   /* behind the window */
+  --sm-body: #eef1f5;      /* window interior */
+  --sm-panel: #ffffff;     /* cards on top of it */
+  --sm-panel-edge: #e2e7ee;
+  --sm-bar: #dfe4e9;
+  --sm-bar-edge: #c8d0da;
+  --sm-fg: #14181f;
+  --sm-muted: #5b6472;
+  --sm-accent: #1a4d8f;
+  --md-typeset-a-color: var(--sm-accent);
+}
+
+[data-md-color-scheme="slate"] {
+  --sm-desktop: #12161c;
+  --sm-body: #1b212b;
+  --sm-panel: #232a35;
+  --sm-panel-edge: #2f3742;
+  --sm-bar: #333b47;
+  --sm-bar-edge: #3d4653;
+  --sm-fg: #e8ebf0;
+  --sm-muted: #98a2b0;
+  --sm-accent: #8ab4f8;
+  --md-typeset-a-color: var(--sm-accent);
+}
+
+body {
+  background: var(--sm-desktop);
+}
+
+/* ---------- the window ---------- */
+
+/* Both halves are held to the same measure and the same radius so the title bar
+   and the body below it read as one frame. */
+.md-header__inner,
+.md-main__inner,
+.md-grid {
+  max-width: 54rem;
+}
+
+/* The palette's `primary` generates [data-md-color-primary] .md-header, which
+   outranks a bare .md-header — hence the doubled selector. Without it the header
+   paints its primary colour as a band across the desktop behind the window. */
+.md-header,
+[data-md-color-primary] .md-header {
+  position: static;
+  background: none;
+  box-shadow: none;
+  color: var(--sm-fg);
+  padding-top: 2.5rem;
+}
+
+.md-header__inner {
+  margin: 0 auto;
+  padding: 0 .8rem;
+  height: 2.4rem;
+  align-items: center;
+  background: var(--sm-bar);
+  border: 1px solid var(--sm-bar-edge);
+  border-bottom: none;
+  border-radius: 12px 12px 0 0;
+}
+
+/* Traffic lights. Three radial gradients in one pseudo-element — no markup to
+   override a template for, and nothing to keep in sync. */
+.md-header__inner::before {
+  content: "";
+  flex: 0 0 auto;
+  width: 3.9rem;
+  height: .9rem;
+  margin-right: .6rem;
+  background-image:
+    radial-gradient(circle at 50% 50%, #ff5f57 46%, transparent 48%),
+    radial-gradient(circle at 50% 50%, #febc2e 46%, transparent 48%),
+    radial-gradient(circle at 50% 50%, #28c840 46%, transparent 48%);
+  background-size: .9rem .9rem;
+  background-position: 0 50%, 1.5rem 50%, 3rem 50%;
+  background-repeat: no-repeat;
+}
+
+/* An empty bar: traffic lights at one end, the theme toggle at the other. The
+   name is already the first thing inside the window, and repeating it up here
+   read as a masthead rather than window furniture. site_name still fills the
+   <title> tag, so tabs and bookmarks are unaffected. */
+.md-header__title {
+  display: none;
+}
+
+/* Logo, and the drawer/search toggles Material adds at narrow widths. There is
+   one page and no nav, so the drawer opens onto nothing. */
+.md-header__button.md-logo,
+.md-header__button[for="__drawer"],
+.md-header__button[for="__search"] {
+  display: none;
+}
+
+/* The palette form is itself .md-header__option — one element, not two. With no
+   title left to divide the bar, an auto margin holds it at the far end. */
+.md-header__option {
+  flex: 0 0 auto;
+  margin-left: auto;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.md-header .md-header__button {
+  color: var(--sm-muted);
+  margin: 0;
+  padding: .3rem;
+}
+
+.md-header .md-header__button:hover {
+  color: var(--sm-fg);
+  opacity: 1;
+}
+
+.md-main {
+  background: none;
+}
+
+.md-main__inner {
+  margin: 0 auto;
+  min-height: auto;
+  background: var(--sm-body);
+  border: 1px solid var(--sm-bar-edge);
+  border-top: none;
+  border-radius: 0 0 12px 12px;
+  box-shadow: 0 24px 60px rgba(0, 0, 0, .18);
+}
+
+.md-content {
+  padding: 0;
+}
+
+.md-content__inner {
+  margin: 0;
+  padding: 1.6rem;
+}
+
+.md-content__inner::before {
+  display: none;
+}
+
+.md-typeset {
+  color: var(--sm-fg);
+}
+
+/* ---------- hero row ---------- */
+
+/* Copy and portrait are separate panels side by side, sharing the gap the card
+   grid below uses so the whole page sits on one rhythm. */
+.md-typeset .hero-row {
+  display: grid;
+  /* Fluid rather than fixed: at middling widths a 15rem portrait squeezes the
+     links row until the last icon wraps to a line of its own. */
+  grid-template-columns: minmax(0, 1fr) clamp(11rem, 24vw, 15rem);
+  gap: .9rem;
+  align-items: stretch;
+}
+
+.md-typeset .hero-photo {
+  background: var(--sm-panel);
+  border: 1px solid var(--sm-panel-edge);
+  border-radius: 14px;
+  overflow: hidden;
+  margin: 0;
+}
+
+/* The panel is sized by the copy beside it, so the image has to fill whatever
+   height that lands on rather than dictate one. */
+.md-typeset .hero-photo img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 50% 30%;
+}
+
+/* ---------- hero panel ---------- */
+
+.md-typeset .hero {
+  background: var(--sm-panel);
+  border: 1px solid var(--sm-panel-edge);
+  border-radius: 14px;
+  /* Less at the foot than the head: the links row is a solid band of pills, so
+     it needs less breathing space under it than the headline needs above. */
+  padding: 2.4rem 2.2rem 2rem;
+}
+
+.md-typeset .hero h1 {
+  font-size: 1.85rem;
+  line-height: 1.18;
+  letter-spacing: -.02em;
+  font-weight: 600;
+  color: var(--sm-fg);
+  margin: 0 0 1.3rem;
+  max-width: 26rem;
+}
+
+.md-typeset .hero p {
+  font-size: .78rem;
+  line-height: 1.65;
+  color: var(--sm-muted);
+  max-width: 32rem;
+}
+
+/* ---------- links row ---------- */
+
+.md-typeset .hero-links {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: .5rem;
+  margin-top: 1.9rem;
+  /* It's a <p>, so it arrives with a paragraph's bottom margin it has no use
+     for — that margin plus the panel padding left 65px of dead space. */
+  margin-bottom: 0;
+}
+
+.md-typeset .hero-links a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: .68rem;
+  font-weight: 500;
+  border-radius: 999px;
+  transition: background-color .2s, color .2s, border-color .2s;
+}
+
+/* Primary: the way through to the résumé. */
+.md-typeset .hero-links .pill {
+  background: var(--sm-fg);
+  color: var(--sm-panel);
+  padding: .55rem 1.2rem;
+  font-weight: 600;
+}
+
+.md-typeset .hero-links .pill:hover {
+  background: var(--sm-accent);
+  color: #fff;
+}
+
+/* Secondary: the address, spelled out so it can be read and copied. */
+.md-typeset .hero-links .pill-outline {
+  border: 1px solid var(--sm-panel-edge);
+  color: var(--sm-muted);
+  padding: .55rem 1rem;
+  font-family: var(--md-code-font-family);
+  font-size: .6rem;
+}
+
+.md-typeset .hero-links .pill-outline:hover {
+  border-color: var(--sm-accent);
+  color: var(--sm-accent);
+}
+
+.md-typeset .hero-links .icon-btn {
+  width: 2.1rem;
+  height: 2.1rem;
+  background: var(--sm-body);
+  color: var(--sm-muted);
+}
+
+.md-typeset .hero-links .icon-btn:hover {
+  background: var(--sm-accent);
+  color: #fff;
+}
+
+.md-typeset .hero-links .icon-btn svg {
+  width: .85rem;
+  height: .85rem;
+  fill: currentColor;
+}
+
+/* ---------- section label ---------- */
+
+.md-typeset .section-label {
+  font-size: .58rem;
+  text-transform: uppercase;
+  letter-spacing: .18em;
+  color: var(--sm-muted);
+  font-weight: 700;
+  margin: 2rem 0 .9rem;
+  padding: 0;
+  border: none;
+}
+
+/* ---------- project cards ---------- */
+
+.md-typeset .grid.cards {
+  grid-gap: .9rem;
+  grid-template-columns: repeat(auto-fit, minmax(17rem, 1fr));
+  margin: 0;
+}
+
+.md-typeset .grid.cards > ul > li {
+  background: var(--sm-panel);
+  border: 1px solid var(--sm-panel-edge);
+  border-radius: 14px;
+  padding: 1.5rem 1.5rem 1.6rem;
+  margin: 0;
+  box-shadow: none;
+  transition: border-color .2s, transform .2s;
+}
+
+.md-typeset .grid.cards > ul > li:hover {
+  border-color: var(--sm-accent);
+  transform: translateY(-2px);
+  box-shadow: none;
+}
+
+.md-typeset .grid.cards > ul > li > p {
+  font-size: .72rem;
+  line-height: 1.6;
+  color: var(--sm-muted);
+  margin: .55rem 0 0;
+}
+
+.md-typeset .grid.cards > ul > li > p:first-child {
+  font-size: .95rem;
+  font-weight: 550;
+  letter-spacing: -.01em;
+  color: var(--sm-fg);
+  margin: 0;
+}
+
+.md-typeset .grid.cards > ul > li > p:first-child a {
+  color: inherit;
+}
+
+.md-typeset .grid.cards > ul > li:hover > p:first-child a {
+  color: var(--sm-accent);
+}
+
+.card-tags {
+  display: inline-block;
+  margin-top: .35rem;
+  font-family: var(--md-code-font-family);
+  font-size: .58rem;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  color: var(--sm-muted);
+  opacity: .75;
+}
+
+/* ---------- footer ---------- */
+
+/* Material's own footer is a dark full-bleed bar below the window, which breaks
+   the frame. Ours goes inside it instead. */
+.md-footer {
+  display: none;
+}
+
+.md-typeset .site-foot {
+  margin-top: 2rem;
+  font-size: .58rem;
+  letter-spacing: .04em;
+  color: var(--sm-muted);
+  text-align: center;
+}
+
+/* The line arrives wrapped in a <p>, whose bottom margin collapses out through
+   the footer and lands on top of the window's own padding. */
+.md-typeset .site-foot p {
+  margin: 0;
+}
+
+.md-typeset .site-foot a {
+  color: var(--sm-muted);
+  text-decoration: underline;
+  text-underline-offset: .2em;
+}
+
+.md-typeset .site-foot a:hover {
+  color: var(--sm-accent);
+}
+
+/* ---------- small screens ----------
+   The window frame is the whole conceit, so it stays; it just loses its desktop
+   margin and its corners once there's no room for them to read as a frame. */
+
+@media screen and (max-width: 44.9375em) {
+  .md-header { padding-top: 0; }
+
+  .md-header__inner,
+  .md-main__inner {
+    border-left: none;
+    border-right: none;
+    border-radius: 0;
+  }
+
+  .md-content__inner { padding: .9rem; }
+
+  .md-typeset .hero { padding: 1.6rem 1.3rem; }
+  .md-typeset .hero h1 { font-size: 1.5rem; }
+
+  /* One column. The portrait leads — a face reads better than a headline as the
+     first thing on a phone — and it holds its own aspect instead of stretching
+     into a letterbox crop of the eyes. */
+  .md-typeset .hero-row { grid-template-columns: 1fr; }
+
+  .md-typeset .hero-photo {
+    order: -1;
+    width: 9rem;
+    aspect-ratio: 4 / 5;
+  }
+
+  .md-typeset .hero-photo img { object-position: 50% 20%; }
+
+  .md-typeset .grid.cards { grid-template-columns: 1fr; }
+}
