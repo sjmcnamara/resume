@@ -18,6 +18,9 @@ calls in complex environments, and on building teams capable of making them
 without me. Right now I'm building an inheritable multi-chain assisted
 self-custody vault.
 
+Outside work I'll be with friends, training at Aikido, rock-climbing and
+discovering new music and gigs.
+
 <p class="hero-links" markdown>
 [Read the résumé](resume/){ .pill }
 [sjmcnamara@gmail.com](mailto:sjmcnamara@gmail.com){ .pill-outline }
