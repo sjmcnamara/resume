@@ -15,8 +15,8 @@ hide:
 Mobile payments in the 2000s, e-commerce at scale to 2013, enterprise Bitcoin in
 2014, one of the first Ethereum Layer 2s in 2018. I'm at my best on the hard
 calls in complex environments, and on building teams capable of making them
-without me. Right now I'm building an inheritable multi-chain assisted
-self-custody vault.
+without me. Currently building an inheritable multi-chain assisted self-custody
+vault.
 
 Outside work, you'll usually find me with friends, on the climbing wall, at
 Aikido, or hunting down new music and gigs.
@@ -37,6 +37,6 @@ Aikido, or hunting down new music and gigs.
 
 </div>
 
-<h2 class="section-label">Building</h2>
+<h2 class="section-label">Personal projects</h2>
 
 --8<-- "projects.md"
