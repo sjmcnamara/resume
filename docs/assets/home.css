@@ -111,6 +111,11 @@ body {
   margin-left: auto;
   display: flex;
   justify-content: flex-end;
+  /* Required, not cosmetic. The palette's radio inputs are position:absolute,
+     and taking .md-header out of the positioning context above sent them to the
+     foot of the document — clicking the toggle focused an input 1900px down and
+     the browser scrolled it into view. This re-anchors them inside the bar. */
+  position: relative;
 }
 
 .md-header .md-header__button {

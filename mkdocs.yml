@@ -14,28 +14,31 @@ use_directory_urls: true
 theme:
   name: material
   language: en
-  font:
-    text: Inter
-    code: Roboto Mono
+  # Naming fonts here makes Material load them from fonts.googleapis.com and
+  # fonts.gstatic.com on every visit. `false` uses the system stack instead —
+  # no third-party requests, and the same -apple-system family the résumé sheet
+  # already uses, so the two pages match rather than diverge.
+  font: false
   favicon: assets/favicon.svg
   features:
     - navigation.instant
     - navigation.instant.progress
+  # Dark first, and neither entry carries a `media` key: the first is the default
+  # for everyone regardless of system preference, and the toggle still switches
+  # and remembers. The mac-window motif is built for the dark scheme.
   palette:
-    - media: "(prefers-color-scheme: light)"
-      scheme: default
-      primary: black
-      accent: indigo
-      toggle:
-        icon: material/weather-night
-        name: Switch to dark mode
-    - media: "(prefers-color-scheme: dark)"
-      scheme: slate
+    - scheme: slate
       primary: black
       accent: indigo
       toggle:
         icon: material/weather-sunny
         name: Switch to light mode
+    - scheme: default
+      primary: black
+      accent: indigo
+      toggle:
+        icon: material/weather-night
+        name: Switch to dark mode
 
 # One page has nothing to search, and the empty search box only clutters the
 # title bar the mac-window motif turns the header into.
