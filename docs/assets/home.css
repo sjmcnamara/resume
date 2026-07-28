@@ -371,6 +371,33 @@ body {
   opacity: .75;
 }
 
+/* ---------- footer ---------- */
+
+/* Material's own footer is a dark full-bleed bar below the window, which breaks
+   the frame. Ours goes inside it instead. */
+.md-footer {
+  display: none;
+}
+
+.md-typeset .site-foot {
+  margin-top: 1.8rem;
+  padding-top: .9rem;
+  border-top: 1px solid var(--sm-panel-edge);
+  font-size: .58rem;
+  letter-spacing: .04em;
+  color: var(--sm-muted);
+}
+
+.md-typeset .site-foot a {
+  color: var(--sm-muted);
+  text-decoration: underline;
+  text-underline-offset: .2em;
+}
+
+.md-typeset .site-foot a:hover {
+  color: var(--sm-accent);
+}
+
 /* ---------- small screens ----------
    The window frame is the whole conceit, so it stays; it just loses its desktop
    margin and its corners once there's no room for them to read as a frame. */

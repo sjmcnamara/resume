@@ -40,3 +40,7 @@ Aikido, or hunting down new music and gigs.
 <h2 class="section-label">Personal projects</h2>
 
 --8<-- "projects.md"
+
+<footer class="site-foot" markdown>
+© 2026 Stephen McNamara
+</footer>

@@ -59,14 +59,9 @@ markdown_extensions:
       base_path: [docs/.generated]
       check_paths: true
 
+# `social` would only render into Material's footer bar, which the mac-window
+# layout hides — the hero carries those links itself.
 extra:
-  social:
-    - icon: fontawesome/brands/github
-      link: https://github.com/sjmcnamara
-      name: GitHub
-    - icon: fontawesome/brands/linkedin
-      link: https://www.linkedin.com/in/stephenmcnamara/
-      name: LinkedIn
   generator: false
 
 # Single page: nothing to navigate to, so the top-level nav stays empty.
