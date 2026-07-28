@@ -31,8 +31,17 @@ Aikido, or hunting down new music and gigs.
 </div>
 
 <div class="hero-photo">
-  <img src="assets/headshot.jpg" width="699" height="1051"
-       alt="Stephen McNamara">
+  <picture>
+    <!-- Phones hide the portrait, but `display: none` still downloads it —
+         160KB over cellular for something never shown. Handing the narrow
+         breakpoint a 43-byte transparent GIF means the JPEG is never requested
+         there, while desktop still loads it eagerly. Keep this media query in
+         step with the one in home.css. -->
+    <source media="(max-width: 44.9375em)"
+            srcset="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==">
+    <img src="assets/headshot.jpg" width="699" height="1051"
+         alt="Stephen McNamara">
+  </picture>
 </div>
 
 </div>
