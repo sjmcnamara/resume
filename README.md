@@ -59,7 +59,10 @@ The résumé is tuned to fit **one page** and the build fails if it doesn't, so 
 you add a role, tighten or compact another.
 
 Landing page copy lives in [`docs/index.md`](docs/index.md); its styling is in
-[`docs/assets/home.css`](docs/assets/home.css). The résumé's layout is in
+[`docs/assets/home.css`](docs/assets/home.css). The portrait is
+`docs/assets/headshot.jpg`, cropped tall (≈ 0.59) to match the panel beside the
+hero — swapping in a squarer image will crop hard, so re-cut it or adjust
+`object-position` in `.hero-photo img`. The résumé's layout is in
 [`assets/style.css`](assets/style.css), with print rules in the `@media print`
 block and the `@page` rule at the bottom.
 

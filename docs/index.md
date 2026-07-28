@@ -6,6 +6,8 @@ hide:
   - footer
 ---
 
+<div class="hero-row" markdown>
+
 <div class="hero" markdown>
 
 # I've built payments and crypto infrastructure at the frontier for thirty years.
@@ -22,6 +24,13 @@ self-custody vault.
 [:fontawesome-brands-github:](https://github.com/sjmcnamara "GitHub"){ .icon-btn }
 [:fontawesome-brands-linkedin-in:](https://www.linkedin.com/in/stephenmcnamara/ "LinkedIn"){ .icon-btn }
 </p>
+
+</div>
+
+<div class="hero-photo">
+  <img src="assets/headshot.jpg" width="647" height="1100"
+       alt="Stephen McNamara">
+</div>
 
 </div>
 
