@@ -27,13 +27,21 @@ that directory:
 
 ```
 python3 build.py --emit-cards                                # docs/.generated/projects.md
-mkdocs build                                                 # site/
+mkdocs build --strict                                        # site/
 python3 build.py --pdf --check --out site/resume --pdf-out site
 ```
 
 `--emit-cards` goes first because MkDocs needs the generated snippet on disk
 before it builds. The PDF is written to the site root while the sheet goes to
 `site/resume/`; `build.py` works out the download link between the two.
+
+```
+mkdocs.yml            docs/index.md          landing page copy
+requirements.txt      docs/assets/home.css   landing page styling
+build.py              docs/assets/headshot.jpg
+resume.json           docs/CNAME             custom domain
+assets/style.css      docs/.generated/       cards, generated, gitignored
+```
 
 ## Editing
 
@@ -59,14 +67,51 @@ The résumé is tuned to fit **one page** and the build fails if it doesn't, so 
 you add a role, tighten or compact another.
 
 Landing page copy lives in [`docs/index.md`](docs/index.md); its styling is in
-[`docs/assets/home.css`](docs/assets/home.css). The portrait is
-`docs/assets/headshot.jpg` (699 × 1051). The panel beside the hero is taller than
-the image, so it fills the height and gives up width at the sides — the squarer
-the source, the more it loses, which is why a tall crop works better here than a
-near-square one. Reframe with `object-position` in `.hero-photo img` if you swap
-it. The résumé's layout is in
+[`docs/assets/home.css`](docs/assets/home.css). The résumé's layout is in
 [`assets/style.css`](assets/style.css), with print rules in the `@media print`
 block and the `@page` rule at the bottom.
+
+## The landing page
+
+A mac window. Material's header is restyled into the title bar — traffic lights,
+rounded top corners, theme toggle — and the content area becomes the window body,
+with the hero, portrait and project cards sitting on it as rounded panels.
+
+Things that are load-bearing rather than decorative, and will break if changed
+without care:
+
+- **`.md-header` is `position: static`.** That's what lets the header sit inside
+  the window instead of over it. It also removed the positioning context the
+  palette's `position: absolute` radio inputs relied on, which sent them to the
+  foot of the document — clicking the toggle then scrolled the page down 1200px.
+  `.md-header__option` carries `position: relative` to re-anchor them.
+- **`[data-md-color-primary] .md-header`** beats a bare `.md-header`, so the
+  background reset needs the doubled selector or the header paints a coloured
+  band across the desktop behind the window.
+- **Material's own footer is hidden.** It's a dark full-bleed bar that sits
+  below the window and breaks the frame. `extra.social` went with it, since
+  those icons only ever rendered there.
+- **`font: false`.** Naming fonts in `theme.font` makes Material fetch them from
+  `fonts.googleapis.com` and `fonts.gstatic.com` on every visit. The system stack
+  is the same `-apple-system` family the résumé sheet uses, so the two pages
+  match and nothing third-party is requested.
+- **Dark is the default.** Neither palette entry carries a `media` key, so the
+  first one wins regardless of system preference. The toggle still remembers.
+- **`plugins: []`** turns off search. One page has nothing to search, and the
+  empty box cluttered the bar it turns into.
+
+### The phone breakpoint is written twice
+
+`home.css` hides the portrait below `44.9375em`; `docs/index.md` hands the same
+width a 43-byte transparent GIF through `<picture>`.
+
+Both are needed. `display: none` alone still downloads the 160KB JPEG, and
+`loading="lazy"` does not help — a hidden image is fetched anyway (measured, in
+Chrome). `<picture>` alone leaves an empty panel where the photo was.
+
+CSS can't read a value out of the markup, so `build.py` compares the two on every
+build and exits non-zero if they drift. A mismatch fails the build instead of
+shipping a missing photo.
 
 ## Building locally
 
@@ -80,6 +125,10 @@ python3 build.py                 # dist/index.html — the sheet on its own
 python3 build.py --pdf           # + dist/stephen-mcnamara.pdf
 python3 build.py --pdf --check   # + fail unless the PDF is exactly one page
 ```
+
+`mkdocs serve` won't show `/resume/`, since the sheet isn't built by MkDocs. To
+see the whole site as it deploys, run the three-step sequence above and serve
+`site/`.
 
 `build.py` still needs nothing but a stdlib Python and a Chrome binary, which is
 already present on macOS and on the GitHub Actions Ubuntu runner. MkDocs is the
@@ -122,8 +171,7 @@ CNAME  www    sjmcnamara.github.io.
 The domain lives in [`docs/CNAME`](docs/CNAME), which MkDocs copies verbatim into
 `site/`. That copy is the part that matters: the workflow publishes `site/`, so a
 `CNAME` sitting anywhere else never reaches Pages and the custom domain silently
-fails to apply. (It used to sit at the repo root with `build.py` copying it into
-`dist/`; MkDocs now handles it, so the root copy is gone.)
+fails to apply.
 
 To change domains: edit `docs/CNAME`, update `basics.url` in `resume.json` and
 `site_url` in `mkdocs.yml`, repoint DNS, and set the new domain under

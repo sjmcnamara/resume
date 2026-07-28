@@ -20,9 +20,9 @@ theme:
   # already uses, so the two pages match rather than diverge.
   font: false
   favicon: assets/favicon.svg
-  features:
-    - navigation.instant
-    - navigation.instant.progress
+  # No `features`: instant loading has nothing to navigate between on a
+  # one-page site, and the only outbound link — /resume/ — isn't a MkDocs page
+  # for it to swap in anyway.
   # Dark first, and neither entry carries a `media` key: the first is the default
   # for everyone regardless of system preference, and the toggle still switches
   # and remembers. The mac-window motif is built for the dark scheme.

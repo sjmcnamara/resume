@@ -253,6 +253,30 @@ def emit_cards(resume, path=CARDS):
     print(f"wrote {path}")
 
 
+def check_breakpoint():
+    """The phone breakpoint is written twice; fail the build if they drift.
+
+    home.css hides the portrait below it, and index.md hands the same width a
+    1x1 GIF through <picture> so the JPEG is never downloaded. Neither can be
+    dropped: display:none still fetches the image (loading="lazy" doesn't help —
+    a hidden image is fetched anyway), and <picture> alone leaves an empty
+    panel. CSS can't read the value out of the markup, so the next best thing is
+    that a mismatch stops the build rather than shipping a missing photo.
+    """
+    pattern = re.compile(r"max-width:\s*([\d.]+em)")
+    found = {}
+    for path in (ROOT / "docs" / "index.md", ROOT / "docs" / "assets" / "home.css"):
+        widths = set(pattern.findall(path.read_text()))
+        if not widths:
+            sys.exit(f"error: no phone breakpoint found in {path.name}")
+        found[path.name] = widths
+
+    shared = set.intersection(*found.values())
+    if not shared:
+        listing = "; ".join(f"{name}: {', '.join(sorted(w))}" for name, w in found.items())
+        sys.exit(f"error: phone breakpoint differs between files — {listing}")
+
+
 def find_chrome():
     for candidate in CHROME_CANDIDATES:
         resolved = candidate if pathlib.Path(candidate).exists() else shutil.which(candidate)
@@ -304,6 +328,7 @@ def main():
     # MkDocs needs the snippet on disk before it builds, so this runs on its own
     # ahead of the site build as well as alongside every ordinary sheet render.
     emit_cards(resume)
+    check_breakpoint()
     if args.emit_cards:
         return
 
