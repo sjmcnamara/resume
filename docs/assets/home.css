@@ -210,7 +210,9 @@ body {
   background: var(--sm-panel);
   border: 1px solid var(--sm-panel-edge);
   border-radius: 14px;
-  padding: 2.4rem 2.2rem;
+  /* Less at the foot than the head: the links row is a solid band of pills, so
+     it needs less breathing space under it than the headline needs above. */
+  padding: 2.4rem 2.2rem 2rem;
 }
 
 .md-typeset .hero h1 {
@@ -238,6 +240,9 @@ body {
   align-items: center;
   gap: .5rem;
   margin-top: 1.9rem;
+  /* It's a <p>, so it arrives with a paragraph's bottom margin it has no use
+     for — that margin plus the panel padding left 65px of dead space. */
+  margin-bottom: 0;
 }
 
 .md-typeset .hero-links a {
