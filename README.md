@@ -1,55 +1,95 @@
-# resume
+# sjmcnamara.com
 
-Single-source résumé: [`resume.json`](resume.json) → a one-page web version and a
-matching print-ready PDF, both published to GitHub Pages.
+A landing page and a single-source résumé, published together to GitHub Pages.
 
-- **Web:** https://sjmcnamara.com
+- **Landing:** https://sjmcnamara.com
+- **Résumé:** https://sjmcnamara.com/resume/
 - **PDF:** https://sjmcnamara.com/stephen-mcnamara.pdf
 
 `www.sjmcnamara.com` and the old `sjmcnamara.github.io/resume/` both redirect to
-the apex, so links shared before the domain move still work.
+the apex, so links shared before the domain move still work. The PDF has kept its
+path since before the landing page existed, so anything already emailed to a
+recruiter still resolves.
 
-Both are generated from the same file on every push to `master`, so the PDF you
-email a recruiter can never drift from the page you link.
+Everything comes from [`resume.json`](resume.json) — bio, roles, project list —
+so the PDF you send can never drift from the page you link.
+
+## Two renderers, one site
+
+The landing page is [Material for MkDocs](https://squidfunk.github.io/mkdocs-material/).
+The résumé is not: [`build.py`](build.py) renders it to a self-contained HTML
+sheet with its CSS inlined, and headless Chrome turns that into the PDF.
+
+Keeping them apart is deliberate. Material ships its own stylesheet and print
+rules; running the sheet through it reflows the layout and quietly costs the
+one-page guarantee. So MkDocs builds `site/`, and then `build.py` *writes into*
+that directory:
+
+```
+python3 build.py --emit-cards                                # docs/.generated/projects.md
+mkdocs build                                                 # site/
+python3 build.py --pdf --check --out site/resume --pdf-out site
+```
+
+`--emit-cards` goes first because MkDocs needs the generated snippet on disk
+before it builds. The PDF is written to the site root while the sheet goes to
+`site/resume/`; `build.py` works out the download link between the two.
 
 ## Editing
 
-Edit `resume.json` and push. That's the whole workflow.
+Edit `resume.json` and push. That's still the whole workflow — a new project
+appears on the landing page and, unless hidden, on the résumé too.
 
 The file follows the [JSON Resume](https://jsonresume.org/schema/) v1.0.0 schema,
-with three additions the renderer understands:
+with a few additions the renderers understand:
 
 | Field | Where | Effect |
 | --- | --- | --- |
 | `x_compact: true` | a `work` entry | Renders as a single dateline under "Earlier career" — no bullets |
-| `x_hidden: true` | a `work`, `education` or `languages` entry | Kept in the file, left off the page |
+| `x_hidden: true` | a `work`, `education`, `languages` or `projects` entry | Kept in the file, left off the **résumé**. Projects still appear on the landing page |
+| `x_tagline` | a `projects` entry | The small caps line under a landing-page card; falls back to the first three `keywords` |
+| `x_repo` | a `projects` entry | `owner/name` on GitHub, for reference |
 | `meta.x_compactHeading` | `meta` | Heading used for the compact block |
 
-`x_hidden` is how the education and languages entries are parked: the data stays
-here, it just doesn't earn its space on the page. Flip the flag to bring it back.
+`x_hidden` does double duty. On education and languages it parks data that
+doesn't earn its space. On projects it's the release valve for the page budget:
+all four projects show on the landing page, only Whistle is on the sheet.
 
-Everything is tuned to fit **one page**. The build fails if it doesn't (see below),
-so if you add a role, tighten or compact another.
+The résumé is tuned to fit **one page** and the build fails if it doesn't, so if
+you add a role, tighten or compact another.
+
+Landing page copy lives in [`docs/index.md`](docs/index.md); its styling is in
+[`docs/assets/home.css`](docs/assets/home.css). The résumé's layout is in
+[`assets/style.css`](assets/style.css), with print rules in the `@media print`
+block and the `@page` rule at the bottom.
 
 ## Building locally
 
 ```bash
-python3 build.py                 # dist/index.html
+python3 -m venv .venv && .venv/bin/pip install -r requirements.txt
+
+python3 build.py --emit-cards    # regenerate the cards from resume.json
+.venv/bin/mkdocs serve           # landing page at localhost:8000, live reload
+
+python3 build.py                 # dist/index.html — the sheet on its own
 python3 build.py --pdf           # + dist/stephen-mcnamara.pdf
 python3 build.py --pdf --check   # + fail unless the PDF is exactly one page
 ```
 
-No npm, no package installs. PDF rendering shells out to headless Chrome, which
-is already present on macOS and on the GitHub Actions Ubuntu runner.
+`build.py` still needs nothing but a stdlib Python and a Chrome binary, which is
+already present on macOS and on the GitHub Actions Ubuntu runner. MkDocs is the
+site's only dependency, pinned in [`requirements.txt`](requirements.txt) below
+2.0 — that release drops the plugin system and rewrites theming with no
+migration path.
 
-Layout lives in [`assets/style.css`](assets/style.css); print rules are in the
-`@media print` block and the `@page` rule at the bottom.
+`docs/.generated/` is gitignored. Run `--emit-cards` after editing `resume.json`
+or `mkdocs serve` will fail on the missing snippet.
 
 ## Publishing
 
-`.github/workflows/publish.yml` runs `build.py --pdf --check` and deploys `dist/`
-to Pages. `--check` is the guard rail: a change that pushes the résumé onto a
-second page fails the build instead of quietly publishing a two-page PDF.
+`.github/workflows/publish.yml` runs the three build steps above and deploys
+`site/` to Pages. `--check` is the guard rail: a change that pushes the résumé
+onto a second page fails the build instead of quietly publishing a two-page PDF.
 
 Pages must be set to **GitHub Actions** as its source (Settings → Pages → Build
 and deployment → Source).
@@ -74,13 +114,15 @@ AAAA   @      2606:50c0:8003::153
 CNAME  www    sjmcnamara.github.io.
 ```
 
-The domain lives in the [`CNAME`](CNAME) file at the repo root, and **`build.py`
-copies it into `dist/`** on every build. That copy is the part that matters: the
-workflow publishes `dist/`, so a `CNAME` sitting only at the repo root never
-reaches Pages and the custom domain silently fails to apply.
+The domain lives in [`docs/CNAME`](docs/CNAME), which MkDocs copies verbatim into
+`site/`. That copy is the part that matters: the workflow publishes `site/`, so a
+`CNAME` sitting anywhere else never reaches Pages and the custom domain silently
+fails to apply. (It used to sit at the repo root with `build.py` copying it into
+`dist/`; MkDocs now handles it, so the root copy is gone.)
 
-To change domains: edit `CNAME`, update `basics.url` in `resume.json`, repoint
-DNS, and set the new domain under Settings → Pages.
+To change domains: edit `docs/CNAME`, update `basics.url` in `resume.json` and
+`site_url` in `mkdocs.yml`, repoint DNS, and set the new domain under
+Settings → Pages.
 
 ## History
 
@@ -88,3 +130,7 @@ This repo previously pushed `resume.json` to a GitHub Gist and relied on
 `registry.jsonresume.org` to render it. That is gone: the registry's PDF endpoint
 returns HTTP 400, and it put three third parties (a token, an action, someone
 else's server) between an edit and the live page.
+
+The résumé also used to be the site root. It moved to `/resume/` when the landing
+page arrived; nothing 404s, since `/resume/` is a new address rather than a
+renamed one.

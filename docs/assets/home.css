@@ -1,0 +1,180 @@
+/* Landing page.
+   Deliberately quiet: the same ink, muted grey and indigo accent the résumé
+   sheet uses, so /resume/ doesn't read as a different site. Everything here is
+   scoped to the home page's own classes except the two width rules, which the
+   single-page layout needs. */
+
+:root {
+  --sm-accent: #1a4d8f;
+  --sm-muted: #5b6472;
+  --sm-rule: #d9dee6;
+  --sm-card: #ffffff;
+}
+
+[data-md-color-scheme="slate"] {
+  --sm-accent: #8ab4f8;
+  --sm-muted: #9aa4b2;
+  --sm-rule: #2c333f;
+  --sm-card: rgba(255, 255, 255, .02);
+}
+
+[data-md-color-scheme="default"] {
+  --md-typeset-a-color: var(--sm-accent);
+}
+
+[data-md-color-scheme="slate"] {
+  --md-typeset-a-color: var(--sm-accent);
+}
+
+/* With no nav and no toc the default grid leaves the column hard against the
+   left edge; hold it to a readable measure and centre it instead. */
+.md-main__inner,
+.md-grid {
+  max-width: 47rem;
+}
+
+.md-content {
+  padding-bottom: 3rem;
+}
+
+/* ---------- hero ---------- */
+
+.hero {
+  padding: 2.5rem 0 1rem;
+}
+
+.hero h1 {
+  font-size: 2.6rem;
+  line-height: 1.05;
+  letter-spacing: -.02em;
+  font-weight: 650;
+  margin: 0;
+  color: var(--md-default-fg-color);
+}
+
+.hero-label {
+  color: var(--sm-muted);
+  font-size: .72rem;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  font-weight: 600;
+  margin: .5rem 0 1.6rem;
+}
+
+.md-typeset .hero p {
+  font-size: .82rem;
+  line-height: 1.7;
+  max-width: 34rem;
+}
+
+/* ---------- links row ---------- */
+
+.md-typeset .hero-links {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 1.4rem;
+  margin-top: 2rem;
+  font-size: .74rem;
+}
+
+.md-typeset .hero-links a {
+  color: var(--sm-muted);
+  font-weight: 500;
+}
+
+.md-typeset .hero-links a:hover {
+  color: var(--sm-accent);
+}
+
+.md-typeset .hero-links .hero-cta {
+  background: var(--md-default-fg-color);
+  color: var(--md-default-bg-color);
+  padding: .5rem 1.05rem;
+  border-radius: 6px;
+  font-weight: 600;
+}
+
+.md-typeset .hero-links .hero-cta::after {
+  content: " →";
+}
+
+.md-typeset .hero-links .hero-cta:hover {
+  background: var(--sm-accent);
+  color: #fff;
+}
+
+/* ---------- section label ---------- */
+
+.md-typeset .section-label {
+  font-size: .62rem;
+  text-transform: uppercase;
+  letter-spacing: .16em;
+  color: var(--sm-muted);
+  font-weight: 650;
+  border-bottom: 1px solid var(--sm-rule);
+  padding-bottom: .4rem;
+  margin: 2.6rem 0 1.2rem;
+}
+
+/* ---------- project cards ---------- */
+
+.md-typeset .grid.cards {
+  grid-gap: .8rem;
+  grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
+}
+
+.md-typeset .grid.cards > ul > li {
+  background: var(--sm-card);
+  border: 1px solid var(--sm-rule);
+  border-radius: 8px;
+  padding: 1rem 1.1rem;
+  margin: 0;
+  box-shadow: none;
+  transition: border-color .2s, transform .2s;
+}
+
+.md-typeset .grid.cards > ul > li:hover {
+  border-color: var(--sm-accent);
+  transform: translateY(-2px);
+  box-shadow: none;
+}
+
+.md-typeset .grid.cards > ul > li > p {
+  font-size: .74rem;
+  line-height: 1.6;
+  color: var(--sm-muted);
+  margin: .45rem 0 0;
+}
+
+.md-typeset .grid.cards > ul > li > p:first-child {
+  font-size: .84rem;
+  color: var(--md-default-fg-color);
+  margin: 0;
+}
+
+.md-typeset .grid.cards > ul > li > p:first-child a {
+  color: inherit;
+}
+
+.md-typeset .grid.cards > ul > li:hover > p:first-child a {
+  color: var(--sm-accent);
+}
+
+.card-tags {
+  display: inline-block;
+  font-size: .62rem;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  font-weight: 600;
+  color: var(--sm-muted);
+  opacity: .8;
+}
+
+/* ---------- small screens ---------- */
+
+@media screen and (max-width: 44.9375em) {
+  .hero { padding-top: 1.5rem; }
+  .hero h1 { font-size: 2rem; }
+  .md-typeset .hero-links { gap: 1rem; }
+}

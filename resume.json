@@ -166,6 +166,8 @@
       "name": "Whistle",
       "description": "A privacy-first, open-source group location sharing app built on Nostr and MLS. End-to-end encrypted: no accounts, no servers, no tracking, no permission required.",
       "url": "https://getwhistle.org",
+      "x_repo": "sjmcnamara/whistle",
+      "x_tagline": "Nostr · MLS · Swift, Kotlin, Rust",
       "keywords": [
         "Nostr",
         "MLS",
@@ -173,6 +175,40 @@
         "Swift",
         "Kotlin",
         "Rust"
+      ]
+    },
+    {
+      "name": "reson8",
+      "description": "An iOS binaural beat generator that synthesises every sample on device. No audio files, no network, no accounts, no analytics.",
+      "url": "https://github.com/sjmcnamara/reson8",
+      "x_repo": "sjmcnamara/reson8",
+      "x_tagline": "Swift · iOS",
+      "x_hidden": true,
+      "keywords": [
+        "Swift",
+        "AVAudioEngine"
+      ]
+    },
+    {
+      "name": "note",
+      "description": "A plain-text note taker for iOS, built for people who want somewhere to put a thought and nothing else.",
+      "url": "https://github.com/sjmcnamara/note",
+      "x_repo": "sjmcnamara/note",
+      "x_tagline": "Swift · iOS",
+      "x_hidden": true,
+      "keywords": [
+        "Swift"
+      ]
+    },
+    {
+      "name": "sum",
+      "description": "A natural language calculator for iOS — type the sum the way you'd say it out loud.",
+      "url": "https://github.com/sjmcnamara/sum",
+      "x_repo": "sjmcnamara/sum",
+      "x_tagline": "Swift · iOS",
+      "x_hidden": true,
+      "keywords": [
+        "Swift"
       ]
     }
   ]

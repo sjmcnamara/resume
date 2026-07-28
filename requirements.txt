@@ -1,0 +1,7 @@
+# The only dependency the site has. build.py itself still needs nothing but a
+# stdlib Python and a Chrome binary.
+#
+# mkdocs is pinned below 2.0 deliberately: 2.0 removes the plugin system and
+# rewrites theming with no migration path, which would take Material with it.
+mkdocs>=1.6,<2.0
+mkdocs-material>=9.7,<10.0
