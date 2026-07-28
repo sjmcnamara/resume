@@ -8,22 +8,19 @@ hide:
 
 <div class="hero" markdown>
 
-# Stephen McNamara
+# I've built payments and crypto infrastructure at the frontier for thirty years.
 
-<p class="hero-label">Payments · Crypto · Three decades</p>
-
-I've shipped at the frontier for thirty years: mobile payments in the 2000s,
-e-commerce at scale to 2013, enterprise Bitcoin in 2014, one of the first
-Ethereum Layer 2s in 2018. I'm at my best on the hard calls in complex
-environments, and on building teams capable of making them without me.
-
-Right now I'm building an inheritable multi-chain assisted self-custody vault.
+Mobile payments in the 2000s, e-commerce at scale to 2013, enterprise Bitcoin in
+2014, one of the first Ethereum Layer 2s in 2018. I'm at my best on the hard
+calls in complex environments, and on building teams capable of making them
+without me. Right now I'm building an inheritable multi-chain assisted
+self-custody vault.
 
 <p class="hero-links" markdown>
-[Résumé](resume/){ .hero-cta }
-[GitHub](https://github.com/sjmcnamara)
-[LinkedIn](https://www.linkedin.com/in/stephenmcnamara/)
-[Email](mailto:sjmcnamara@gmail.com)
+[Read the résumé](resume/){ .pill }
+[sjmcnamara@gmail.com](mailto:sjmcnamara@gmail.com){ .pill-outline }
+[:fontawesome-brands-github:](https://github.com/sjmcnamara "GitHub"){ .icon-btn }
+[:fontawesome-brands-linkedin-in:](https://www.linkedin.com/in/stephenmcnamara/ "LinkedIn"){ .icon-btn }
 </p>
 
 </div>

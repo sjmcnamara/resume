@@ -18,13 +18,10 @@ theme:
   font:
     text: Inter
     code: Roboto Mono
-  icon:
-    logo: material/hexagon-outline
   favicon: assets/favicon.svg
   features:
     - navigation.instant
     - navigation.instant.progress
-    - content.action.view
   palette:
     - media: "(prefers-color-scheme: light)"
       scheme: default
@@ -40,6 +37,10 @@ theme:
       toggle:
         icon: material/weather-sunny
         name: Switch to light mode
+
+# One page has nothing to search, and the empty search box only clutters the
+# title bar the mac-window motif turns the header into.
+plugins: []
 
 extra_css:
   - assets/home.css

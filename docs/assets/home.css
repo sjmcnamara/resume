@@ -1,70 +1,202 @@
-/* Landing page.
-   Deliberately quiet: the same ink, muted grey and indigo accent the résumé
-   sheet uses, so /resume/ doesn't read as a different site. Everything here is
-   scoped to the home page's own classes except the two width rules, which the
-   single-page layout needs. */
+/* Landing page — a mac window sitting on a desktop.
+   Material's header is restyled into the title bar (traffic lights, rounded top
+   corners, centred mono title) and the content area becomes the window body, so
+   the whole page reads as one application window rather than a document.
 
-:root {
-  --sm-accent: #1a4d8f;
-  --sm-muted: #5b6472;
-  --sm-rule: #d9dee6;
-  --sm-card: #ffffff;
-}
+   Colours stay in the résumé's family: the light scheme's desktop and panels are
+   the #eef1f5 / #ffffff pairing the sheet at /resume/ already uses, so the two
+   pages read as one site. */
 
-[data-md-color-scheme="slate"] {
-  --sm-accent: #8ab4f8;
-  --sm-muted: #9aa4b2;
-  --sm-rule: #2c333f;
-  --sm-card: rgba(255, 255, 255, .02);
-}
-
+:root,
 [data-md-color-scheme="default"] {
+  --sm-desktop: #dfe4ea;   /* behind the window */
+  --sm-body: #eef1f5;      /* window interior */
+  --sm-panel: #ffffff;     /* cards on top of it */
+  --sm-panel-edge: #e2e7ee;
+  --sm-bar: #dfe4e9;
+  --sm-bar-edge: #c8d0da;
+  --sm-fg: #14181f;
+  --sm-muted: #5b6472;
+  --sm-accent: #1a4d8f;
   --md-typeset-a-color: var(--sm-accent);
 }
 
 [data-md-color-scheme="slate"] {
+  --sm-desktop: #12161c;
+  --sm-body: #1b212b;
+  --sm-panel: #232a35;
+  --sm-panel-edge: #2f3742;
+  --sm-bar: #333b47;
+  --sm-bar-edge: #3d4653;
+  --sm-fg: #e8ebf0;
+  --sm-muted: #98a2b0;
+  --sm-accent: #8ab4f8;
   --md-typeset-a-color: var(--sm-accent);
 }
 
-/* With no nav and no toc the default grid leaves the column hard against the
-   left edge; hold it to a readable measure and centre it instead. */
+body {
+  background: var(--sm-desktop);
+}
+
+/* ---------- the window ---------- */
+
+/* Both halves are held to the same measure and the same radius so the title bar
+   and the body below it read as one frame. */
+.md-header__inner,
 .md-main__inner,
 .md-grid {
-  max-width: 47rem;
+  max-width: 54rem;
+}
+
+/* The palette's `primary` generates [data-md-color-primary] .md-header, which
+   outranks a bare .md-header — hence the doubled selector. Without it the header
+   paints its primary colour as a band across the desktop behind the window. */
+.md-header,
+[data-md-color-primary] .md-header {
+  position: static;
+  background: none;
+  box-shadow: none;
+  color: var(--sm-fg);
+  padding-top: 2.5rem;
+}
+
+.md-header__inner {
+  margin: 0 auto;
+  padding: 0 .8rem;
+  height: 2.4rem;
+  align-items: center;
+  background: var(--sm-bar);
+  border: 1px solid var(--sm-bar-edge);
+  border-bottom: none;
+  border-radius: 12px 12px 0 0;
+}
+
+/* Traffic lights. Three radial gradients in one pseudo-element — no markup to
+   override a template for, and nothing to keep in sync. */
+.md-header__inner::before {
+  content: "";
+  flex: 0 0 auto;
+  width: 3.2rem;
+  height: .7rem;
+  margin-right: .6rem;
+  background-image:
+    radial-gradient(circle at 50% 50%, #ff5f57 46%, transparent 48%),
+    radial-gradient(circle at 50% 50%, #febc2e 46%, transparent 48%),
+    radial-gradient(circle at 50% 50%, #28c840 46%, transparent 48%);
+  background-size: .7rem .7rem;
+  background-position: 0 50%, 1.25rem 50%, 2.5rem 50%;
+  background-repeat: no-repeat;
+}
+
+/* The name sits centre-stage as a window title, not a masthead. */
+.md-header__title {
+  margin: 0;
+  flex: 1 1 auto;
+  font-family: var(--md-code-font-family);
+  font-size: .62rem;
+  font-weight: 500;
+  letter-spacing: .02em;
+  color: var(--sm-muted);
+  text-align: center;
+  line-height: 2.4rem;
+  overflow: hidden;
+}
+
+.md-header__title .md-header__topic {
+  position: static;
+  transform: none;
+  opacity: 1;
+  display: block;
+}
+
+/* Material emits a second topic holding the page title, for the swap it does on
+   scroll. There is no scroll swap here, so it would just print the name twice. */
+.md-header__title .md-header__topic + .md-header__topic {
+  display: none;
+}
+
+/* Logo, and the drawer/search toggles Material adds at narrow widths. There is
+   one page and no nav, so the drawer opens onto nothing. */
+.md-header__button.md-logo,
+.md-header__button[for="__drawer"],
+.md-header__button[for="__search"] {
+  display: none;
+}
+
+/* Balance the traffic lights so the title stays optically centred. */
+.md-header__option,
+.md-header [data-md-component="palette"] {
+  flex: 0 0 3.8rem;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.md-header .md-header__button {
+  color: var(--sm-muted);
+  margin: 0;
+  padding: .3rem;
+}
+
+.md-header .md-header__button:hover {
+  color: var(--sm-fg);
+  opacity: 1;
+}
+
+.md-main {
+  background: none;
+}
+
+.md-main__inner {
+  margin: 0 auto;
+  min-height: auto;
+  background: var(--sm-body);
+  border: 1px solid var(--sm-bar-edge);
+  border-top: none;
+  border-radius: 0 0 12px 12px;
+  box-shadow: 0 24px 60px rgba(0, 0, 0, .18);
 }
 
 .md-content {
-  padding-bottom: 3rem;
+  padding: 0;
 }
 
-/* ---------- hero ---------- */
-
-.hero {
-  padding: 2.5rem 0 1rem;
-}
-
-.hero h1 {
-  font-size: 2.6rem;
-  line-height: 1.05;
-  letter-spacing: -.02em;
-  font-weight: 650;
+.md-content__inner {
   margin: 0;
-  color: var(--md-default-fg-color);
+  padding: 1.6rem 1.6rem 2.4rem;
 }
 
-.hero-label {
-  color: var(--sm-muted);
-  font-size: .72rem;
-  letter-spacing: .12em;
-  text-transform: uppercase;
+.md-content__inner::before {
+  display: none;
+}
+
+.md-typeset {
+  color: var(--sm-fg);
+}
+
+/* ---------- hero panel ---------- */
+
+.md-typeset .hero {
+  background: var(--sm-panel);
+  border: 1px solid var(--sm-panel-edge);
+  border-radius: 14px;
+  padding: 2.4rem 2.2rem;
+}
+
+.md-typeset .hero h1 {
+  font-size: 1.85rem;
+  line-height: 1.18;
+  letter-spacing: -.02em;
   font-weight: 600;
-  margin: .5rem 0 1.6rem;
+  color: var(--sm-fg);
+  margin: 0 0 1.3rem;
+  max-width: 26rem;
 }
 
 .md-typeset .hero p {
-  font-size: .82rem;
-  line-height: 1.7;
-  max-width: 34rem;
+  font-size: .78rem;
+  line-height: 1.65;
+  color: var(--sm-muted);
+  max-width: 32rem;
 }
 
 /* ---------- links row ---------- */
@@ -73,62 +205,91 @@
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  gap: 1.4rem;
-  margin-top: 2rem;
-  font-size: .74rem;
+  gap: .5rem;
+  margin-top: 1.9rem;
 }
 
 .md-typeset .hero-links a {
-  color: var(--sm-muted);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: .68rem;
   font-weight: 500;
+  border-radius: 999px;
+  transition: background-color .2s, color .2s, border-color .2s;
 }
 
-.md-typeset .hero-links a:hover {
-  color: var(--sm-accent);
-}
-
-.md-typeset .hero-links .hero-cta {
-  background: var(--md-default-fg-color);
-  color: var(--md-default-bg-color);
-  padding: .5rem 1.05rem;
-  border-radius: 6px;
+/* Primary: the way through to the résumé. */
+.md-typeset .hero-links .pill {
+  background: var(--sm-fg);
+  color: var(--sm-panel);
+  padding: .55rem 1.2rem;
   font-weight: 600;
 }
 
-.md-typeset .hero-links .hero-cta::after {
-  content: " →";
-}
-
-.md-typeset .hero-links .hero-cta:hover {
+.md-typeset .hero-links .pill:hover {
   background: var(--sm-accent);
   color: #fff;
+}
+
+/* Secondary: the address, spelled out so it can be read and copied. */
+.md-typeset .hero-links .pill-outline {
+  border: 1px solid var(--sm-panel-edge);
+  color: var(--sm-muted);
+  padding: .55rem 1.2rem;
+  font-family: var(--md-code-font-family);
+  font-size: .64rem;
+}
+
+.md-typeset .hero-links .pill-outline:hover {
+  border-color: var(--sm-accent);
+  color: var(--sm-accent);
+}
+
+.md-typeset .hero-links .icon-btn {
+  width: 2.1rem;
+  height: 2.1rem;
+  background: var(--sm-body);
+  color: var(--sm-muted);
+}
+
+.md-typeset .hero-links .icon-btn:hover {
+  background: var(--sm-accent);
+  color: #fff;
+}
+
+.md-typeset .hero-links .icon-btn svg {
+  width: .85rem;
+  height: .85rem;
+  fill: currentColor;
 }
 
 /* ---------- section label ---------- */
 
 .md-typeset .section-label {
-  font-size: .62rem;
+  font-size: .58rem;
   text-transform: uppercase;
-  letter-spacing: .16em;
+  letter-spacing: .18em;
   color: var(--sm-muted);
-  font-weight: 650;
-  border-bottom: 1px solid var(--sm-rule);
-  padding-bottom: .4rem;
-  margin: 2.6rem 0 1.2rem;
+  font-weight: 700;
+  margin: 2rem 0 .9rem;
+  padding: 0;
+  border: none;
 }
 
 /* ---------- project cards ---------- */
 
 .md-typeset .grid.cards {
-  grid-gap: .8rem;
-  grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
+  grid-gap: .9rem;
+  grid-template-columns: repeat(auto-fit, minmax(17rem, 1fr));
+  margin: 0;
 }
 
 .md-typeset .grid.cards > ul > li {
-  background: var(--sm-card);
-  border: 1px solid var(--sm-rule);
-  border-radius: 8px;
-  padding: 1rem 1.1rem;
+  background: var(--sm-panel);
+  border: 1px solid var(--sm-panel-edge);
+  border-radius: 14px;
+  padding: 1.5rem 1.5rem 1.6rem;
   margin: 0;
   box-shadow: none;
   transition: border-color .2s, transform .2s;
@@ -141,15 +302,17 @@
 }
 
 .md-typeset .grid.cards > ul > li > p {
-  font-size: .74rem;
+  font-size: .72rem;
   line-height: 1.6;
   color: var(--sm-muted);
-  margin: .45rem 0 0;
+  margin: .55rem 0 0;
 }
 
 .md-typeset .grid.cards > ul > li > p:first-child {
-  font-size: .84rem;
-  color: var(--md-default-fg-color);
+  font-size: .95rem;
+  font-weight: 550;
+  letter-spacing: -.01em;
+  color: var(--sm-fg);
   margin: 0;
 }
 
@@ -163,18 +326,33 @@
 
 .card-tags {
   display: inline-block;
-  font-size: .62rem;
-  letter-spacing: .08em;
+  margin-top: .35rem;
+  font-family: var(--md-code-font-family);
+  font-size: .58rem;
+  letter-spacing: .06em;
   text-transform: uppercase;
-  font-weight: 600;
   color: var(--sm-muted);
-  opacity: .8;
+  opacity: .75;
 }
 
-/* ---------- small screens ---------- */
+/* ---------- small screens ----------
+   The window frame is the whole conceit, so it stays; it just loses its desktop
+   margin and its corners once there's no room for them to read as a frame. */
 
 @media screen and (max-width: 44.9375em) {
-  .hero { padding-top: 1.5rem; }
-  .hero h1 { font-size: 2rem; }
-  .md-typeset .hero-links { gap: 1rem; }
+  .md-header { padding-top: 0; }
+
+  .md-header__inner,
+  .md-main__inner {
+    border-left: none;
+    border-right: none;
+    border-radius: 0;
+  }
+
+  .md-content__inner { padding: .9rem .9rem 1.6rem; }
+
+  .md-typeset .hero { padding: 1.6rem 1.3rem; }
+  .md-typeset .hero h1 { font-size: 1.5rem; }
+
+  .md-typeset .grid.cards { grid-template-columns: 1fr; }
 }
