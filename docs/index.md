@@ -18,8 +18,8 @@ calls in complex environments, and on building teams capable of making them
 without me. Right now I'm building an inheritable multi-chain assisted
 self-custody vault.
 
-Outside work I'll be with friends, training at Aikido, rock-climbing and
-discovering new music and gigs.
+Outside work, you'll usually find me with friends, on the climbing wall, at
+Aikido, or hunting down new music and gigs.
 
 <p class="hero-links" markdown>
 [Read the résumé](resume/){ .pill }
@@ -31,7 +31,7 @@ discovering new music and gigs.
 </div>
 
 <div class="hero-photo">
-  <img src="assets/headshot.jpg" width="699" height="1051"
+  <img src="assets/headshot.jpg" width="778" height="1051"
        alt="Stephen McNamara">
 </div>
 
