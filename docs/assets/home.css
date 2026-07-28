@@ -409,18 +409,10 @@ body {
   .md-typeset .hero { padding: 1.6rem 1.3rem; }
   .md-typeset .hero h1 { font-size: 1.5rem; }
 
-  /* One column. The portrait leads — a face reads better than a headline as the
-     first thing on a phone — and it holds its own aspect instead of stretching
-     into a letterbox crop of the eyes. */
+  /* No portrait. Stacked above the copy it read as a loose tile floating over
+     the hero rather than part of it, and there's no column for it to sit in. */
   .md-typeset .hero-row { grid-template-columns: 1fr; }
-
-  .md-typeset .hero-photo {
-    order: -1;
-    width: 9rem;
-    aspect-ratio: 4 / 5;
-  }
-
-  .md-typeset .hero-photo img { object-position: 50% 20%; }
+  .md-typeset .hero-photo { display: none; }
 
   .md-typeset .grid.cards { grid-template-columns: 1fr; }
 }
