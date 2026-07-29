@@ -173,8 +173,8 @@ The domain lives in [`docs/CNAME`](docs/CNAME), which MkDocs copies verbatim int
 `CNAME` sitting anywhere else never reaches Pages and the custom domain silently
 fails to apply.
 
-To change domains: edit `docs/CNAME`, update `basics.url` in `resume.json` and
-`site_url` in `mkdocs.yml`, repoint DNS, and set the new domain under
+To change domains: edit `docs/CNAME`, update `site_url` in `mkdocs.yml` and the
+`home` link in `build.py`, repoint DNS, and set the new domain under
 Settings → Pages.
 
 ## History
