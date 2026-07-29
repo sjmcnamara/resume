@@ -61,7 +61,7 @@ with a few additions the renderers understand:
 
 `x_hidden` does double duty. On education and languages it parks data that
 doesn't earn its space. On projects it's the release valve for the page budget:
-all four projects show on the landing page, only Whistle is on the sheet.
+all four projects show on the landing page, only whistle is on the sheet.
 
 The résumé is tuned to fit **one page** and the build fails if it doesn't, so if
 you add a role, tighten or compact another.

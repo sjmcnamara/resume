@@ -203,7 +203,11 @@ body {
 }
 
 .md-typeset .hero h1 {
-  font-size: 1.85rem;
+  /* Sized so the headline packs to three lines inside the 26rem measure below.
+     It turns 4-line at 1.8rem, so there is deliberate margin here for system
+     font stacks that measure a little wider than SF. Retest if the wording or
+     `max-width` changes. */
+  font-size: 1.7rem;
   line-height: 1.18;
   letter-spacing: -.02em;
   font-weight: 600;
