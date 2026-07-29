@@ -7,7 +7,7 @@
     "email": "sjmcnamara@gmail.com",
     "phone": "",
     "url": "https://sjmcnamara.com",
-    "summary": "Technology executive with three decades in payments and crypto. I'm at my best on the hard calls in complex environments, and building teams capable of making them without me. I've grown engineering organisations from first hire to 100+, and shipped at the frontier: mobile payments in the 2000s, e-commerce at scale to 2013, enterprise Bitcoin in 2014, one of the first Ethereum Layer 2s in 2018. I'm currently building an inheritable multi-chain assisted self-custody vault.",
+    "summary": "Technology executive with three decades in payments and crypto. Most of the work is deciding without enough information, and making it hold up for the humans, the systems and the business alike. I build teams that don't need me in the room to do it. I've grown engineering organisations from first hire to 100+, and shipped at the frontier: mobile payments in the 2000s, e-commerce at scale since 2008, enterprise Bitcoin in 2014, one of the first Ethereum Layer 2s in 2018. I'm currently building an inheritable multi-chain assisted self-custody vault.",
     "location": {
       "countryCode": "UK",
       "address": "United Kingdom"
@@ -163,7 +163,7 @@
   },
   "projects": [
     {
-      "name": "Whistle",
+      "name": "whistle",
       "description": "A privacy-first, open-source group location sharing app built on Nostr and MLS. End-to-end encrypted: no accounts, no servers, no tracking, no permission required.",
       "url": "https://getwhistle.org",
       "x_repo": "sjmcnamara/whistle",
