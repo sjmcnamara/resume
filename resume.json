@@ -6,19 +6,8 @@
     "image": "",
     "email": "hello@sjmcnamara.com",
     "phone": "",
-    "url": "https://sjmcnamara.com",
     "summary": "Technology executive with three decades in payments and crypto. Most of the work is deciding without enough information, and making it hold up for the humans, the systems and the business alike. I build teams that don't need me in the room to do it. I've grown engineering organisations from first hire to 100+, and shipped at the frontier: mobile payments in the 2000s, e-commerce at scale since 2008, enterprise Bitcoin in 2014, one of the first Ethereum Layer 2s in 2018. I'm currently building an inheritable multi-chain assisted self-custody vault.",
-    "location": {
-      "countryCode": "UK",
-      "address": "United Kingdom"
-    },
-    "profiles": [
-      {
-        "network": "LinkedIn",
-        "username": "stephenmcnamara",
-        "url": "https://www.linkedin.com/in/stephenmcnamara/"
-      }
-    ]
+    "profiles": []
   },
   "work": [
     {

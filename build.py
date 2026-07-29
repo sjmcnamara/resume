@@ -117,16 +117,12 @@ def render(resume, css, pdf_href=PDF_NAME):
         url = profile.get("url", "")
         contact.append(f'<a href="{esc(url)}">{esc(shorten(url))}</a>')
 
-    # Site rides on the location line. A fourth contact row grows the masthead
-    # and costs a line of body copy; widening a row squeezes the label into
-    # wrapping. Pairing with the short location line avoids both.
-    last = []
-    if basics.get("url"):
-        last.append(f'<a href="{esc(basics["url"])}">{esc(shorten(basics["url"]))}</a>')
+    # Site and location used to share a third row here. The masthead is down to
+    # the email now; if anything comes back, pair the two on one line rather
+    # than adding a row — a fourth row grows the masthead and costs a line of
+    # body copy, and widening a row squeezes the label into wrapping.
     if basics.get("location", {}).get("address"):
-        last.append(esc(basics["location"]["address"]))
-    if last:
-        contact.append(" &nbsp;·&nbsp; ".join(last))
+        contact.append(esc(basics["location"]["address"]))
 
     parts = [
         '<div class="sheet">',
@@ -192,8 +188,11 @@ def render(resume, css, pdf_href=PDF_NAME):
     parts.append("</div>")
     # Screen-only footer: back to the landing page on the left, PDF on the right.
     # The home link is absolute so it still points somewhere useful when the
-    # sheet is opened straight off disk out of dist/.
-    home = esc(basics.get("url") or "/")
+    # sheet is opened straight off disk out of dist/. It's hardcoded rather than
+    # read from basics.url, which is deliberately absent — the printed sheet
+    # carries the email and nothing else. Keep in step with site_url in
+    # mkdocs.yml.
+    home = "https://sjmcnamara.com"
     parts.append(
         '<div class="actions">'
         f'<a class="back" href="{home}">← sjmcnamara.com</a>'
