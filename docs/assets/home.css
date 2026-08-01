@@ -45,7 +45,7 @@ body {
 .md-header__inner,
 .md-main__inner,
 .md-grid {
-  max-width: 54rem;
+  max-width: 62rem;
 }
 
 /* The palette's `primary` generates [data-md-color-primary] .md-header, which
@@ -166,9 +166,9 @@ body {
    grid below uses so the whole page sits on one rhythm. */
 .md-typeset .hero-row {
   display: grid;
-  /* Fluid rather than fixed: at middling widths a 15rem portrait squeezes the
+  /* Fluid rather than fixed: at middling widths a fixed portrait squeezes the
      links row until the last icon wraps to a line of its own. */
-  grid-template-columns: minmax(0, 1fr) clamp(11rem, 24vw, 15rem);
+  grid-template-columns: minmax(0, 1fr) clamp(11rem, 24vw, 17rem);
   gap: .9rem;
   align-items: stretch;
 }
@@ -220,7 +220,7 @@ body {
   font-size: .78rem;
   line-height: 1.65;
   color: var(--sm-muted);
-  max-width: 32rem;
+  max-width: 36rem;
 }
 
 /* ---------- links row ---------- */
@@ -291,6 +291,14 @@ body {
   fill: currentColor;
 }
 
+/* The ostrich is a thin running silhouette rather than a solid glyph, so at the
+   shared .85rem it reads lighter than GitHub and LinkedIn beside it. A little
+   more box evens the three up. */
+.md-typeset .hero-links .icon-btn--nostr svg {
+  width: 1.05rem;
+  height: 1.05rem;
+}
+
 /* ---------- section label ---------- */
 
 .md-typeset .section-label {
@@ -306,9 +314,12 @@ body {
 
 /* ---------- project cards ---------- */
 
+/* The minimum holds the four cards to 2x2 inside the widened window. Anything
+   under 20rem lets a third column in, which leaves the fourth card orphaned on
+   a row of its own. Revisit if the project count stops being even. */
 .md-typeset .grid.cards {
   grid-gap: .9rem;
-  grid-template-columns: repeat(auto-fit, minmax(17rem, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
   margin: 0;
 }
 
