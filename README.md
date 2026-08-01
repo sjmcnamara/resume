@@ -99,6 +99,12 @@ without care:
   first one wins regardless of system preference. The toggle still remembers.
 - **`plugins: []`** turns off search. One page has nothing to search, and the
   empty box cluttered the bar it turns into.
+- **`icons/` is the custom icon set.** Material ships fontawesome, material,
+  octicons and simple; the Nostr ostrich is in none of them, so it lives in
+  `icons/custom/nostr.svg` and resolves as `:custom-nostr:`. What registers it is
+  `custom_icons` under the `pymdownx.emoji` options — *not* `theme.custom_dir`,
+  which only covers templates. The file paints with `currentColor` on both fill
+  and stroke so it follows the theme like the bundled icons do.
 
 ### The phone breakpoint is written twice
 

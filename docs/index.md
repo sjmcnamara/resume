@@ -25,6 +25,7 @@ Aikido, or hunting down new music and gigs.
 [Read the résumé](resume/){ .pill }
 [hello@sjmcnamara.com](mailto:hello@sjmcnamara.com){ .pill-outline }
 [:fontawesome-brands-github:](https://github.com/sjmcnamara "GitHub"){ .icon-btn }
+[:custom-nostr:](https://primal.net/p/npub172xwnhqm9w3punlmcthzclsrz037qprqfyzmapd64tx3erwray6qvh4yvm "Nostr"){ .icon-btn .icon-btn--nostr }
 [:fontawesome-brands-linkedin-in:](https://www.linkedin.com/in/stephenmcnamara/ "LinkedIn"){ .icon-btn }
 </p>
 

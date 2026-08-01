@@ -51,9 +51,17 @@ markdown_extensions:
   - attr_list
   - md_in_html
   - smarty
+  # `custom_icons` is what registers icons Material doesn't ship — a directory
+  # outside docs_dir, indexed as `:<subdir>-<filename>:`. The Nostr ostrich is in
+  # none of the bundled fontawesome/material/octicons/simple sets, so
+  # icons/custom/nostr.svg becomes `:custom-nostr:`. This is the emoji
+  # extension's option, not theme.custom_dir — that one is only for templates.
   - pymdownx.emoji:
       emoji_index: !!python/name:material.extensions.emoji.twemoji
       emoji_generator: !!python/name:material.extensions.emoji.to_svg
+      options:
+        custom_icons:
+          - icons
   # Cards are generated from resume.json into docs/.generated/ — a dot-prefixed
   # directory so MkDocs skips it as a page and only the snippet include picks
   # it up. Run `python3 build.py --emit-cards` before serving or building.
